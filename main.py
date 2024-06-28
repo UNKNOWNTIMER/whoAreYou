@@ -238,7 +238,7 @@ if __name__ == "__main__":
             color = (255, 255, 255) if idx == current_option else (100, 100, 100)
             option_surface = font.render(option, True, color)
             screen.blit(option_surface, (50, 50 + idx * 50))
-        a = 0
+
         # 填充背景色
         screen.fill(black)
         # 显示图片在左下角
