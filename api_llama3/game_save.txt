@@ -1,0 +1,4 @@
+player_life=120
+player_skills=['水枪', '水盾', '水疗', '水攻']
+player_explored_regions=['海洋', '湖泊', '河流', '沼泽']
+player_items=['水母']

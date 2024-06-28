@@ -1,0 +1,4 @@
+python ==3.11
+openai
+pillow ==1.17
+Pygame==2.5.2
