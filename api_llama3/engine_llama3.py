@@ -35,6 +35,23 @@ def generate_response(client, context):
         print(f"Error generating response: {e}")
         return "Sorry, there was an error processing your request."
 
+# 用于读取文API钥匙
+def read_api_key(filename):
+    try:
+        with open(filename, 'r') as file:
+            return file.read().strip()  # 使用 strip() 去除可能的前后空白字符
+    except FileNotFoundError:
+        os.system('cls') 
+        print("未找到api_key.txt文件,请前往https://ai.nvidia.com/\n获取免费钥匙后粘贴进api_key.txt文件,该文件与mian.py同级")
+        exit()
+        return None
+    except Exception as e:
+        os.system('cls') 
+        print(f"读取文件时发生错误?怪了：{e}")
+        exit()
+        return None
+
+
 #这里是调用的人物名人询问，见text/QA.py文件列表
 def wiki_human(client):
     context = []
@@ -44,7 +61,7 @@ def wiki_human(client):
     context.append({"role": "assistant", "content": response})
     return response 
 
-#这里是调用的游戏程序询问
+#这里是调用的游戏程序询问。A,B为不同词语元素
 def game_code(client,A,B):
     print("\n\n%%%%%%%%%%%%%%%%%%%正在白嫖%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%请稍等啦%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%正在白嫖%%%%%%%%%%%%%%%%%%%\n")
     context = []
@@ -116,8 +133,12 @@ def run_aIgame_in_cmd(client,UI_flag):
     os.system('cls')
     print("####哎呀!程序结束了####\n\n看来这位程序员犯了一些小错误。\n您可以回到<WhoAreYou>远程面试窗口继续面试\n对方发你的测试题我已经放到您的generated_data/game_code文件夹中了\n下次编写时会替换掉这位程序员写的代码~\n")
     return 
-
-api_key = "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"  #程序的心脏放这里哇~API
+api_key = ""
+api_key = read_api_key('api_key.txt') #程序的心脏
+if api_key == "":
+    os.system('cls')    
+    print("未找到API钥匙文件,请前往https://ai.nvidia.com/\n获取免费钥匙后粘贴进api_key.txt")
+    exit()
 client = create_openai_client(api_key)
 
 
