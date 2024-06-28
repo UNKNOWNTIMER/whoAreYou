@@ -2,7 +2,6 @@ import pygame
 import threading
 import sys
 import os
-import time
 import random
 from RNG.RNG_list import random_game,random_game_element
 from RNG.pixelMan import create_pixel_person
