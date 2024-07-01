@@ -150,7 +150,7 @@ def play_music(music_file):
     # 加载
     pygame.mixer.music.load("music\\"+music_file+".mp3")
     # 播放
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
 
 if __name__ == "__main__":
     #这一块为全局变量,因为代码内容不多我就不优化内存了~偷懒
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     font_path = 'C:\\Windows\\Fonts\\simhei.ttf'  # Windows中黑体的典型路径
     font = pygame.font.Font(font_path, 24)
     # pixelMan初始化运行，文件夹路径
-    play_music(music_file)
+    play_music("coffeeTime_loop")
     folder_path = "generated_data/pixelMan"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)  # 创建文件夹如果不存在

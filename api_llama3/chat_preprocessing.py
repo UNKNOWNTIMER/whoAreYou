@@ -44,10 +44,10 @@ def extract_info(text):
     background = re.search(background_pattern, text)
     
     # 提取匹配的字符串，如果没有找到匹配，则返回空字符串
-    name = name.group(1) if name else ""
-    age = age.group(1) if age else ""
-    gender = gender.group(1) if gender else ""
-    background = background.group(1) if background else ""
+    name = name.group(1) if name else "未知面试者"
+    age = age.group(1) if age else "不详"
+    gender = gender.group(1) if gender else "不详"
+    background = background.group(1) if background else "不愿意透露你的黑客背景"
     
     return name, age, gender, background
 
