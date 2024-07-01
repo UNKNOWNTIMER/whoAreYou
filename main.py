@@ -39,11 +39,13 @@ def game_dev_menu():
     global tag_1,tag_2,tag_3
     return [UI_switch_tag,tag_1, tag_2, tag_3, "你再想想还能写什么?"]
 
+#讲述故事模块
 def story():
     global background
     print_t(background)
     return
 
+#作为这个程序员分享经验
 def share_experience():
     print_t("分享一些经验。")
     return
@@ -262,7 +264,10 @@ if __name__ == "__main__":
     pygame.quit()
     sys.exit()
  
+ 
 '''
+#一些历史代码临时保存
+
 #自动化编写模块
 game_txet = game_code(client)
 #print(game_txet)
