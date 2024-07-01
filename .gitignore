@@ -1,3 +1,7 @@
+#<whoAreYou> Code cache and test
+test/
+generated_data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
