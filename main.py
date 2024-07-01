@@ -13,14 +13,16 @@ def main_menu():
 
 def UI_switch():
     global UI_flag,UI_switch_tag,current_menu, current_option
-    #开关
+    #是否将LLM生成的小游戏的UI也接入大模型。开关
     UI_flag = 1 - UI_flag
     if  UI_flag:
+        play_music("coffeeTime_loop")
         UI_switch_tag = "等下测试时不要美化UI!"
         print_t("嗯,我会让UI变得好看~")
         current_menu = main_menu()
         current_option = 0
     else:
+        play_music("coffeeTime_loop")
         UI_switch_tag = "测试时记得美化UI!"
         print_t("好的,我不会去美化UI的")
         current_menu = main_menu()
@@ -33,6 +35,7 @@ def game_again():
         print_t("哎?我还什么都没写呢")
     else:
         print_t("好滴!请您查看CMD窗口")
+        play_music("gameTime_loop")
     return
 
 def game_dev_menu():
@@ -51,8 +54,10 @@ def share_experience():
     return
 
 def op_1():
+    play_music("gameTime_loop")
     global client,random_game_element1,random_game_type1,UI_flag
     print_t(random_game_type1)
+
     game_txet = game_code(client,random_game_element1,random_game_type1)
     #print(game_txet)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -62,6 +67,7 @@ def op_1():
     return
 
 def op_2():
+    play_music("gameTime_loop")
     global client,random_game_element2,random_game_type2,UI_flag
     print_t(random_game_type2)
     game_txet = game_code(client,random_game_element2,random_game_type2)
@@ -72,6 +78,7 @@ def op_2():
     return
 
 def op_3():
+    play_music("gameTime_loop")
     global client,random_game_element3,random_game_type3,UI_flag
     print_t(random_game_type3)
     game_txet = game_code(client,random_game_element3,random_game_type3)
@@ -87,6 +94,7 @@ def return_to_main():
     global random_game_element1,random_game_element2,random_game_element3
     current_menu = main_menu()
     current_option = 0
+    play_music("coffeeTime_loop")
     print_t("好吧")
     random_game_type1 = random_game()
     random_game_type2 = random_game()
@@ -98,13 +106,14 @@ def return_to_main():
     tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
     tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
     return
-
+#二级菜单，游戏开发的
 def test_game_dev():
     global current_menu, current_option
     current_menu = game_dev_menu()
+    play_music("menu_loop")
     current_option = 0
     return
-
+#下一位面试者
 def next_person():
     global second_image_path,result_text,name, age, gender, background
     os.system('cls')
@@ -114,7 +123,6 @@ def next_person():
     second_image_index = random.randint(1, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
     return  
-
 #用来控制pygame打印对话
 def print_t(result_t):
     global result_text
@@ -178,9 +186,8 @@ if __name__ == "__main__":
     white = (255, 255, 255)
     # 加载字体，指定黑体
     font_path = 'C:\\Windows\\Fonts\\simhei.ttf'  # Windows中黑体的典型路径
-    font = pygame.font.Font(font_path, 24)
-    # pixelMan初始化运行，文件夹路径
-    play_music("coffeeTime_loop")
+    font = pygame.font.Font(font_path, 24)   # pixelMan初始化运行，文件夹路径
+    play_music("coffeeTime_loop")#初始化音乐
     folder_path = "generated_data/pixelMan"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)  # 创建文件夹如果不存在
