@@ -143,6 +143,15 @@ def wrap_text(text, chars_per_line):
             break
     return lines
 
+#播放指定的音乐文件
+def play_music(music_file):
+    # 停止
+    pygame.mixer.music.stop()
+    # 加载
+    pygame.mixer.music.load("music\\"+music_file+".mp3")
+    # 播放
+    pygame.mixer.music.play()
+
 if __name__ == "__main__":
     #这一块为全局变量,因为代码内容不多我就不优化内存了~偷懒
     global current_menu, current_option,tag_1,tag_2,tag_3,name, age, gender, background,second_image_path,result_text,random_game_type1,random_game_type2,random_game_type3
@@ -157,6 +166,7 @@ if __name__ == "__main__":
     game_flag = 0#检查是否生成了extrated_game_code.py游戏代码文件
     # 初始化pygame
     pygame.init()
+    pygame.mixer.init()
     # 设置窗口
     screen_width = 800
     screen_height = 500
@@ -170,6 +180,7 @@ if __name__ == "__main__":
     font_path = 'C:\\Windows\\Fonts\\simhei.ttf'  # Windows中黑体的典型路径
     font = pygame.font.Font(font_path, 24)
     # pixelMan初始化运行，文件夹路径
+    play_music(music_file)
     folder_path = "generated_data/pixelMan"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)  # 创建文件夹如果不存在
