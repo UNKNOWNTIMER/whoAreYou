@@ -55,7 +55,7 @@ def story():
 def share_experience():
     print_t("分享一些经验。")
     return
-
+#程序生成程序代码选择1
 def op_1():
     play_music("gameTime_loop")
     global client,random_game_element1,random_game_type1,UI_flag,game_flag
@@ -68,7 +68,7 @@ def op_1():
     thread.start()
     #run_aIgame_in_cmd(client)    
     return
-
+#程序生成程序代码选择2
 def op_2():
     play_music("gameTime_loop")
     global client,random_game_element2,random_game_type2,UI_flag
@@ -80,7 +80,7 @@ def op_2():
     thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
     thread.start()
     return
-
+#程序生成程序代码选择3
 def op_3():
     play_music("gameTime_loop")
     global client,random_game_element3,random_game_type3,UI_flag
@@ -111,7 +111,7 @@ def return_to_main():
     tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
     tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
     return
-#二级菜单，游戏开发的
+#二级菜单，LLM游戏开发选择
 def test_game_dev():
     global current_menu, current_option
     current_menu = game_dev_menu()
@@ -169,17 +169,17 @@ def play_music(music_file):
     
 #播放语音
 def play_voice(voice_file):
-    # 加载
+    # 不同的语音读取
     voice_p = pygame.mixer.Sound("music\\voice\\"+voice_file+"_"+str(random.randint(0,2))+".wav")
-    # 播放
+    # 播放！播放！！
     voice_p.play()
     return
 
 if __name__ == "__main__":
-    #这一块为全局变量,反正都用python了。码内容也不多我就不优化内存了~偷懒不要打我
+    #这一块为全局变量,反正都用python了,程序体量也不大,就不节约内存了直接摆~嘿嘿O(∩_∩)O
     global current_menu, current_option,tag_1,tag_2,tag_3,name, age, gender, background,second_image_path,result_text,random_game_type1,random_game_type2,random_game_type3
     global text_lines,random_game_element1,random_game_element2,random_game_element3
-    global UI_flag,UI_switch_tag,game_flag
+    global UI_flag,UI_switch_tag,game_flag,button0,button1
     
     os.system('cls')#清理掉启动信息
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
@@ -197,11 +197,12 @@ if __name__ == "__main__":
     flags = pygame.NOFRAME
     screen_width = 800
     screen_height = 500
-    
+    icon = pygame.image.load('background\\TIMER.png')
     b_image = pygame.image.load('background\\BG.png') 
-    
+    #logo TIMER
+    pygame.display.set_icon(icon)
+    #屏幕初始化
     screen = pygame.display.set_mode((screen_width, screen_height),flags)
-    
     # 设置窗口标题
     pygame.display.set_caption('WhoAreYou')
     
