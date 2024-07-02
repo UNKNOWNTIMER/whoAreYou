@@ -31,6 +31,7 @@ def UI_switch():
     
 def game_again():
     global game_flag
+    play_voice("again")
     if not game_flag:
         print_t("哎?我还什么都没写呢")
     else:
@@ -53,6 +54,7 @@ def story():
 
 #作为这个程序员分享经验
 def share_experience():
+    play_voice("showme")
     print_t("分享一些经验。")
     return
 #程序生成程序代码选择1
@@ -100,6 +102,7 @@ def return_to_main():
     current_menu = main_menu()
     current_option = 0
     play_music("coffeeTime_loop")
+    play_voice("interested")
     print_t("好吧")
     random_game_type1 = random_game()
     random_game_type2 = random_game()
@@ -116,12 +119,14 @@ def test_game_dev():
     global current_menu, current_option
     current_menu = game_dev_menu()
     play_music("menu_loop")
+    play_voice("test")
     current_option = 0
     return
 #下一位面试者
 def next_person():
     global second_image_path,result_text,name, age, gender, background,game_flag
     os.system('cls')
+    play_voice("next")
     print("###"+name+"退出了面试软件###\n###正在建立下一位面试者的连接中,请稍等###\n\n虽然"+name+"面无表情,但是你还是从他30X30的像素脸庞上捕捉到了一丝不甘")
     name, age, gender, background = extract_info(wiki_human(client))
     print_t ("您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁")
@@ -216,7 +221,7 @@ if __name__ == "__main__":
     play_music("coffeeTime_loop")
     button0 = pygame.mixer.Sound("music/button/down_up.wav")
     button1 = pygame.mixer.Sound("music/button/enter.wav")
-
+    #像素人生成检察
     folder_path = "generated_data/pixelMan"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)  # 创建文件夹如果不存在
@@ -250,14 +255,13 @@ if __name__ == "__main__":
     UI_switch_tag = "记得测试时不要美化UI!"
     # 显示结果的文本
     result_text ="您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁"
-
     current_menu = main_menu()
     current_option = 0
     running = True
     print("\n%%%对方轻敲了下麦克风,提醒您whoAreYou远程面试软件已打开,请点击切换一下窗口%%%")
+    play_voice("hello")
     while running:
         # 选项系统,收纳了所有的选项,用于调用函数。
-
         menu_functions = {
             "介绍一下你的经历!": story,
             "你有什么经验分享给我吗？": share_experience,
