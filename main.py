@@ -36,6 +36,8 @@ def game_again():
     else:
         print_t("好滴!请您查看CMD窗口")
         play_music("gameTime_loop")
+        thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
+        thread.start()
     return
 
 def game_dev_menu():
@@ -45,6 +47,7 @@ def game_dev_menu():
 #讲述故事模块
 def story():
     global background
+    play_voice("Describe")
     print_t(background)
     return
 
@@ -154,7 +157,7 @@ def wrap_text(text, chars_per_line):
             break
     return lines
 
-#播放指定的音乐文件
+#播放BGM
 def play_music(music_file):
     # 停止
     pygame.mixer.music.stop()
@@ -162,6 +165,15 @@ def play_music(music_file):
     pygame.mixer.music.load("music\\"+music_file+".mp3")
     # 播放
     pygame.mixer.music.play(-1)
+    return
+    
+#播放语音
+def play_voice(voice_file):
+    # 加载
+    voice_p = pygame.mixer.Sound("music\\voice\\"+voice_file+"_"+str(random.randint(0,2))+".wav")
+    # 播放
+    voice_p.play()
+    return
 
 if __name__ == "__main__":
     #这一块为全局变量,反正都用python了。码内容也不多我就不优化内存了~偷懒不要打我
@@ -199,7 +211,11 @@ if __name__ == "__main__":
     # 加载字体，指定黑体
     font_path = 'C:\\Windows\\Fonts\\simhei.ttf'  # Windows中黑体的典型路径
     font = pygame.font.Font(font_path, 24)   # pixelMan初始化运行，文件夹路径
-    play_music("coffeeTime_loop")#初始化音乐
+    #初始化音乐
+    play_music("coffeeTime_loop")
+    button0 = pygame.mixer.Sound("music/button/down_up.wav")
+    button1 = pygame.mixer.Sound("music/button/enter.wav")
+
     folder_path = "generated_data/pixelMan"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)  # 创建文件夹如果不存在
@@ -260,10 +276,13 @@ if __name__ == "__main__":
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     current_option = (current_option - 1) % len(current_menu)
+                    button0.play()
                 elif event.key == pygame.K_DOWN:
                     current_option = (current_option + 1) % len(current_menu)
+                    button0.play()
                 elif event.key == pygame.K_RETURN:
                     menu_functions[current_menu[current_option]]()
+                    button1.play()
                 elif event.key == pygame.K_ESCAPE:  # 按 ESC 键退出
                     running = False
                     
