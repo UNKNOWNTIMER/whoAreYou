@@ -52,7 +52,7 @@ def create_pixel_person():
     shirt_color = random_color()
     pants_color = random_color()
     shoe_color = random_color()
-    eye_color = 'black'  # 眼睛颜色
+    eye_color = 'white'  # 眼睛颜色
     mouth_color = 'black'  # 嘴巴颜色
 
     # 随机体型特征

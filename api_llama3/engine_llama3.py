@@ -15,7 +15,7 @@ def create_openai_client(api_key):
         api_key = api_key
     )
     
-#游戏心脏
+#游戏核心
 def generate_response(client, context):
     try:
         completion = client.chat.completions.create(
@@ -131,7 +131,7 @@ def run_aIgame_in_cmd(client,UI_flag):
 
     process.wait()  # 等待子进程结束
     os.system('cls')
-    print("####哎呀!程序结束了####\n\n看来这位程序员犯了一些小错误。\n您可以回到<WhoAreYou>远程面试窗口继续面试\n对方发你的测试题我已经放到您的generated_data/game_code文件夹中了\n下次编写时会替换掉这位程序员写的代码~\n")
+    print("####嚯!程序结束了####\n\n看来你已完成了游戏,或者这位程序员犯了一些小错误。\n您可以在不关闭该窗口下,回到<WhoAreYou>远程面试窗口继续面试或者再次游玩\n对方发你的测试题我已经放到您的generated_data/game_code文件夹中了\n下次编写时会替换掉这位程序员写的代码~\n")
     return 
 api_key = ""
 api_key = read_api_key('api_key.txt') #程序的心脏

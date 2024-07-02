@@ -55,9 +55,9 @@ def share_experience():
 
 def op_1():
     play_music("gameTime_loop")
-    global client,random_game_element1,random_game_type1,UI_flag
+    global client,random_game_element1,random_game_type1,UI_flag,game_flag
     print_t(random_game_type1)
-
+    game_flag = 1
     game_txet = game_code(client,random_game_element1,random_game_type1)
     #print(game_txet)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -70,6 +70,7 @@ def op_2():
     play_music("gameTime_loop")
     global client,random_game_element2,random_game_type2,UI_flag
     print_t(random_game_type2)
+    game_flag = 1
     game_txet = game_code(client,random_game_element2,random_game_type2)
     #print(game_txet)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -81,6 +82,7 @@ def op_3():
     play_music("gameTime_loop")
     global client,random_game_element3,random_game_type3,UI_flag
     print_t(random_game_type3)
+    game_flag = 1
     game_txet = game_code(client,random_game_element3,random_game_type3)
     #print(game_txet)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -115,13 +117,14 @@ def test_game_dev():
     return
 #下一位面试者
 def next_person():
-    global second_image_path,result_text,name, age, gender, background
+    global second_image_path,result_text,name, age, gender, background,game_flag
     os.system('cls')
     print("###"+name+"退出了面试软件###\n###正在建立下一位面试者的连接中,请稍等###\n\n虽然"+name+"面无表情,但是你还是从他30X30的像素脸庞上捕捉到了一丝不甘")
     name, age, gender, background = extract_info(wiki_human(client))
     print_t ("您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁")
     second_image_index = random.randint(1, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
+    game_flag = 0
     return  
 #用来控制pygame打印对话
 def print_t(result_t):
@@ -161,10 +164,11 @@ def play_music(music_file):
     pygame.mixer.music.play(-1)
 
 if __name__ == "__main__":
-    #这一块为全局变量,因为代码内容不多我就不优化内存了~偷懒
+    #这一块为全局变量,反正都用python了。码内容也不多我就不优化内存了~偷懒不要打我
     global current_menu, current_option,tag_1,tag_2,tag_3,name, age, gender, background,second_image_path,result_text,random_game_type1,random_game_type2,random_game_type3
     global text_lines,random_game_element1,random_game_element2,random_game_element3
     global UI_flag,UI_switch_tag,game_flag
+    
     os.system('cls')#清理掉启动信息
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
     #调用模型中生成的人物信息
@@ -172,15 +176,23 @@ if __name__ == "__main__":
     #初始化全局设置开关
     UI_flag = 1#是否启用LLM用于美化LLM模型写的程序
     game_flag = 0#检查是否生成了extrated_game_code.py游戏代码文件
+    
     # 初始化pygame
     pygame.init()
     pygame.mixer.init()
-    # 设置窗口
+    
+    # 设置pygame窗口
+    flags = pygame.NOFRAME
     screen_width = 800
     screen_height = 500
-    screen = pygame.display.set_mode((screen_width, screen_height))
+    
+    b_image = pygame.image.load('background\\BG.png') 
+    
+    screen = pygame.display.set_mode((screen_width, screen_height),flags)
+    
     # 设置窗口标题
     pygame.display.set_caption('WhoAreYou')
+    
     # 设置颜色
     black = (0, 0, 0)
     white = (255, 255, 255)
@@ -252,6 +264,9 @@ if __name__ == "__main__":
                     current_option = (current_option + 1) % len(current_menu)
                 elif event.key == pygame.K_RETURN:
                     menu_functions[current_menu[current_option]]()
+                elif event.key == pygame.K_ESCAPE:  # 按 ESC 键退出
+                    running = False
+                    
                     
         screen.fill((0, 0, 0))
         for idx, option in enumerate(current_menu):
@@ -261,6 +276,7 @@ if __name__ == "__main__":
 
         # 填充背景色
         screen.fill(black)
+        screen.blit(b_image,(0, 0))
         # 显示图片在左下角
         screen.blit(character_image, (10, screen_height - character_image.get_height() - 10))
         # 显示第二张图片在右上角
