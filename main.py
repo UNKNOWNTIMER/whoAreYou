@@ -219,7 +219,7 @@ if __name__ == "__main__":
     black = (0, 0, 0)
     white = (255, 255, 255)
     # 加载字体，指定黑体
-    font_path = 'C:\\Windows\\Fonts\\simhei.ttf'  # Windows中黑体的典型路径
+    font_path = 'text_QA\\hzk-pixel-12px.ttf'  # Windows中黑体的典型路径
     font = pygame.font.Font(font_path, 24)   # pixelMan初始化运行，文件夹路径
     #初始化音乐
     play_music("coffeeTime_loop")
