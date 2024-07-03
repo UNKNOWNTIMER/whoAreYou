@@ -1,4 +1,5 @@
 from RNG.RNG_list import random_country
+import random
 global _country
 #模型全局语言回答控制
 change_language = "中文"
@@ -6,7 +7,7 @@ change_language = "中文"
 def wAY():
     global _country
     _country = random_country()
-    wAY = "国家:"+_country+",随机提供一位wiki全球真实世界知名程序员,只用"+change_language+"回答,python文本结构如name=\"xxx\"age=\"xxx\"gender=\"xxx\"background=\"xxx\""
+    wAY = "国家:"+_country+",随机提供一位年龄在"+str(random.randint(1,9)*10)+"岁左右的wiki全球真实世界知名程序员,只用"+change_language+"回答,python文本结构如name=\"xxx\"age=\"xxx\"gender=\"xxx\"background=\"xxx\""
     return wAY
 
 
