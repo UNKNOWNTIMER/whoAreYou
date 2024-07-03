@@ -126,7 +126,7 @@ def test_game_dev():
     return
 #下一位面试者
 def next_person():
-    global second_image_path,result_text,name, age, gender, background,game_flag
+    global second_image_path,result_text,name, age, gender,background,game_flag,b_image
     os.system('cls')
     play_voice("next")
     print("###"+name+"退出了面试软件###\n###正在建立下一位面试者的连接中,请稍等###\n\n虽然"+name+"面无表情,但是你还是从他30X30的像素脸庞上捕捉到了一丝不甘")
@@ -134,6 +134,7 @@ def next_person():
     print_t ("您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁")
     second_image_index = random.randint(1, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
+    b_image = pygame.image.load('background\\BG_'+random.randint(0,7)+'.png') 
     game_flag = 0
     return  
 #用来控制pygame打印对话
@@ -186,7 +187,7 @@ def play_voice(voice_file):
 if __name__ == "__main__":
     #这一块为全局变量,反正都用python了,程序体量也不大,就不节约内存了直接摆~嘿嘿O(∩_∩)O
     global current_menu, current_option,tag_1,tag_2,tag_3,name, age, gender, background,second_image_path,result_text,random_game_type1,random_game_type2,random_game_type3
-    global text_lines,random_game_element1,random_game_element2,random_game_element3
+    global text_lines,random_game_element1,random_game_element2,random_game_element3,b_image
     global UI_flag,UI_switch_tag,game_flag,button0,button1
     
     os.system('cls')#清理掉启动信息
@@ -207,7 +208,7 @@ if __name__ == "__main__":
     screen_width = 800
     screen_height = 500
     icon = pygame.image.load('background\\TIMER.png')
-    b_image = pygame.image.load('background\\BG.png') 
+    b_image = pygame.image.load('background\\BG_'+random.randint(0,7)+'.png') 
     #logo TIMER
     pygame.display.set_icon(icon)
     #屏幕初始化
@@ -308,7 +309,7 @@ if __name__ == "__main__":
         # 显示图片在左下角
         screen.blit(character_image, (10, screen_height - character_image.get_height() - 10))
         # 显示第二张图片在右上角
-        screen.blit(second_image, (screen_width - second_image.get_width() - 10, 10))
+        screen.blit(second_image, (screen_width - second_image.get_width() + 20, 20))
 
         # 显示中间选项系统
         for idx, option in enumerate(current_menu):

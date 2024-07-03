@@ -19,3 +19,7 @@ def ai_game(A,B):
 def ui_game(ui_text):
     ui_game = "\""+ui_text+"\""+":以上为一个UI交互界面,在不改变原本UI的情况下，在后面加()进行一个"+change_language+"的内容润色并添加表情符号,只回答UI界面"
     return ui_game
+
+def ui_YourExperience(A):
+    ui_Experience = ""
+    return ui_Experience
