@@ -9,15 +9,16 @@ from api_llama3.engine_llama3 import run_aIgame_in_cmd,game_code,client,wiki_hum
 from api_llama3.chat_preprocessing import extract_and_save_code,extract_info
 from text_QA import QA
 def main_menu():
-    return ["介绍一下你的经历!", "你有什么经验分享给我吗？", "我想测试下你的游戏开发水平","让我再玩一次你写的游戏!", "下一位"]
+    return ["让我瞧瞧你的推荐信!", "你有什么经验分享给我吗?", "我想测试下你的游戏开发水平","让我再玩一次你写的游戏!", "下一位"]
 
 def UI_switch():
-    global UI_flag,UI_switch_tag,current_menu, current_option
+    global UI_flag,UI_switch_tag,current_menu, current_option,voice_p
     #是否将LLM生成的小游戏的UI也接入大模型。开关
     UI_flag = 1 - UI_flag
     if  UI_flag:
         play_music("coffeeTime_loop")
         UI_switch_tag = "等下测试时不要美化UI!"
+        voice_p.stop()
         play_voice("UIon")
         print_t("嗯,我会让UI变得好看~")
         current_menu = main_menu()
@@ -25,6 +26,7 @@ def UI_switch():
     else:
         play_music("coffeeTime_loop")
         UI_switch_tag = "测试时记得美化UI!"
+        voice_p.stop()
         play_voice("UIoff")
         print_t("好的,我不会去美化UI的")
         current_menu = main_menu()
@@ -32,8 +34,10 @@ def UI_switch():
     return
     
 def game_again():
-    global game_flag
-    play_voice("again")
+    global game_flag,voice_p,UI_flag
+    voice_p.stop()
+    if not UI_flag or not game_flag:
+        play_voice("again")
     if not game_flag:
         print_t("哎?我还什么都没写呢")
     else:
@@ -49,18 +53,23 @@ def game_dev_menu():
 
 #讲述故事模块
 def story():
-    global background
+    global background,voice_p
+    voice_p.stop()
     play_voice("Describe")
     print_t(background)
     return
 
 #作为这个程序员分享经验
 def share_experience():
+    global voice_p
+    voice_p.stop()
     play_voice("showme")
     print_t("分享一些经验。")
     return
 #程序生成程序代码选择1
 def op_1():
+    global voice_p,game_flag
+    voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element1,random_game_type1,UI_flag,game_flag
     print_t(random_game_type1)
@@ -74,8 +83,11 @@ def op_1():
     return
 #程序生成程序代码选择2
 def op_2():
+    global voice_p,game_flag
+    voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element2,random_game_type2,UI_flag
+    
     print_t(random_game_type2)
     game_flag = 1
     game_txet = game_code(client,random_game_element2,random_game_type2)
@@ -86,6 +98,8 @@ def op_2():
     return
 #程序生成程序代码选择3
 def op_3():
+    global voice_p,game_flag
+    voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element3,random_game_type3,UI_flag
     print_t(random_game_type3)
@@ -100,10 +114,11 @@ def op_3():
 #返回菜单
 def return_to_main():
     global current_menu, current_option, tag_1, tag_2, tag_3,random_game_type1,random_game_type2,random_game_type3
-    global random_game_element1,random_game_element2,random_game_element3
+    global random_game_element1,random_game_element2,random_game_element3,voice_p
     current_menu = main_menu()
     current_option = 0
     play_music("coffeeTime_loop")
+    voice_p.stop()
     play_voice("interested")
     print_t("好吧")
     random_game_type1 = random_game()
@@ -118,23 +133,25 @@ def return_to_main():
     return
 #二级菜单，LLM游戏开发选择
 def test_game_dev():
-    global current_menu, current_option
+    global current_menu, current_option,voice_p
     current_menu = game_dev_menu()
     play_music("menu_loop")
+    voice_p.stop()
     play_voice("test")
     current_option = 0
     return
 #下一位面试者
 def next_person():
-    global second_image_path,result_text,name, age, gender,background,game_flag,b_image
+    global second_image_path,result_text,name, age, gender,background,game_flag,b_image,voice_p
     os.system('cls')
+    voice_p.stop()
     play_voice("next")
     print("###"+name+"退出了面试软件###\n###正在建立下一位面试者的连接中,请稍等###\n\n虽然"+name+"面无表情,但是你还是从他30X30的像素脸庞上捕捉到了一丝不甘")
     name, age, gender, background = extract_info(wiki_human(client))
     print_t ("您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁")
     second_image_index = random.randint(1, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
-    b_image = pygame.image.load('background\\BG_'+random.randint(0,7)+'.png') 
+    b_image = pygame.image.load('background\\BG\\BG_'+str(random.randint(0,7))+'.png') 
     game_flag = 0
     return  
 #用来控制pygame打印对话
@@ -177,6 +194,7 @@ def play_music(music_file):
     
 #播放语音
 def play_voice(voice_file):
+    global voice_p
     # 不同的语音读取
     voice_p = pygame.mixer.Sound("music\\voice\\"+voice_file+"_"+str(random.randint(0,2))+".wav")
     # 播放！播放！！
@@ -188,7 +206,7 @@ if __name__ == "__main__":
     #这一块为全局变量,反正都用python了,程序体量也不大,就不节约内存了直接摆~嘿嘿O(∩_∩)O
     global current_menu, current_option,tag_1,tag_2,tag_3,name, age, gender, background,second_image_path,result_text,random_game_type1,random_game_type2,random_game_type3
     global text_lines,random_game_element1,random_game_element2,random_game_element3,b_image
-    global UI_flag,UI_switch_tag,game_flag,button0,button1
+    global UI_flag,UI_switch_tag,game_flag,button0,button1,voice_p
     
     os.system('cls')#清理掉启动信息
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
@@ -208,7 +226,7 @@ if __name__ == "__main__":
     screen_width = 800
     screen_height = 500
     icon = pygame.image.load('background\\TIMER.png')
-    b_image = pygame.image.load('background\\BG_'+random.randint(0,7)+'.png') 
+    b_image = pygame.image.load('background\\BG\\BG_'+str(random.randint(0,7))+'.png') 
     #logo TIMER
     pygame.display.set_icon(icon)
     #屏幕初始化
@@ -268,8 +286,8 @@ if __name__ == "__main__":
     while running:
         # 选项系统,收纳了所有的选项,用于调用函数。
         menu_functions = {
-            "介绍一下你的经历!": story,
-            "你有什么经验分享给我吗？": share_experience,
+            "让我瞧瞧你的推荐信!": story,
+            "你有什么经验分享给我吗?": share_experience,
             "我想测试下你的游戏开发水平": test_game_dev,
             "让我再玩一次你写的游戏!":game_again,
             "下一位": next_person,

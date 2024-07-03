@@ -11,6 +11,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from api_llama3 import chat_preprocessing
 from text_QA import QA
 
+global voice_b
+
 def create_openai_client(api_key):
     return OpenAI(
         base_url="https://integrate.api.nvidia.com/v1",
@@ -66,6 +68,7 @@ def wiki_human(client):
 
 #这里是调用的游戏程序询问。A,B为不同词语元素
 def game_code(client,A,B):
+    global voice_b
     print("\n\n%%%%%%%%%%%%%%%%%%%正在白嫖%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%请稍等啦%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%正在白嫖%%%%%%%%%%%%%%%%%%%\n")
     play_voice("work")
     context = []
@@ -75,6 +78,7 @@ def game_code(client,A,B):
     context.append({"role": "assistant", "content": response})
     user_input = "给代码添加更多内容以及丰富的故事,更多的功能,玩家交互方式为输入数字,让代码完善,提供更多的用户UI交互提示"
     context.append({"role": "user", "content": user_input})
+    voice_b.stop()
     play_voice("almost")
     print("\n\n%%%%%%%%%%%%%%%%%%%正在疯狂白嫖%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%再稍等一下下%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%正在疯狂白嫖%%%%%%%%%%%%%%%%%%%\n")
     response = generate_response(client, context)
@@ -92,6 +96,7 @@ def enqueue_output(out, queue):
     return 
 
 def run_aIgame_in_cmd(client,UI_flag):
+    global voice_b
     #启动一个子进程来运行 Python 脚本，并使用线程从其标准输出中非阻塞地读取数据。
     script_path = "generated_data\\game_code\\extracted_game_code.py"
     # 启动子进程
@@ -124,8 +129,9 @@ def run_aIgame_in_cmd(client,UI_flag):
                 if UI_flag:
                     os.system('cls')
                     print("\n\n%%%%%%%%%%%%%%%%%%%正在计算%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%请稍稍等%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%美化UI中%%%%%%%%%%%%%%%%%%%\n")
-                    voice_u = pygame.mixer.Sound("music\\voice\\fabulous_"+str(random.randint(0,8))+".wav")
-                    voice_u.play()
+                    voice_b.stop()
+                    voice_b = pygame.mixer.Sound("music\\voice\\fabulous_"+str(random.randint(0,8))+".wav")
+                    voice_b.play()
                     user_input = QA.ui_game(uitext)
                     context.append({"role": "user", "content": user_input})
                     response = generate_response(client, context)
@@ -137,17 +143,18 @@ def run_aIgame_in_cmd(client,UI_flag):
 
     process.wait()  # 等待子进程结束
     os.system('cls')
+    voice_b.stop()
     play_voice("oopsies")
     print("####嚯!程序结束了####\n\n看来你已完成了游戏,或者这位程序员犯了一些小错误。\n您可以在不关闭该窗口下,回到<WhoAreYou>远程面试窗口继续面试或者再次游玩\n对方发你的测试题我已经放到您的generated_data/game_code文件夹中了\n下次编写时会替换掉这位程序员写的代码~\n")
     return 
 
 def play_voice(voice_file):
     # 不同的语音读取
-    voice_p = pygame.mixer.Sound("music\\voice\\"+voice_file+"_"+str(random.randint(0,2))+".wav")
+    global voice_b
+    voice_b = pygame.mixer.Sound("music\\voice\\"+voice_file+"_"+str(random.randint(0,2))+".wav")
     # 播放！播放！！
-    voice_p.play()
+    voice_b.play()
     return
-
 api_key = ""
 api_key = read_api_key('api_key.txt') #程序的心脏
 if api_key == "":
