@@ -178,6 +178,7 @@ def play_voice(voice_file):
     voice_p = pygame.mixer.Sound("music\\voice\\"+voice_file+"_"+str(random.randint(0,2))+".wav")
     # 播放！播放！！
     voice_p.play()
+    
     return
 
 if __name__ == "__main__":
@@ -198,8 +199,9 @@ if __name__ == "__main__":
     pygame.init()
     pygame.mixer.init()
     
-    # 设置pygame窗口
-    flags = pygame.NOFRAME
+    # 设置pygame窗口为无边框
+    #flags = pygame.NOFRAME
+    #边框大小
     screen_width = 800
     screen_height = 500
     icon = pygame.image.load('background\\TIMER.png')
@@ -207,7 +209,7 @@ if __name__ == "__main__":
     #logo TIMER
     pygame.display.set_icon(icon)
     #屏幕初始化
-    screen = pygame.display.set_mode((screen_width, screen_height),flags)
+    screen = pygame.display.set_mode((screen_width, screen_height))#,flags)
     # 设置窗口标题
     pygame.display.set_caption('WhoAreYou')
     
