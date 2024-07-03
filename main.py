@@ -18,12 +18,14 @@ def UI_switch():
     if  UI_flag:
         play_music("coffeeTime_loop")
         UI_switch_tag = "等下测试时不要美化UI!"
+        play_voice("UIon")
         print_t("嗯,我会让UI变得好看~")
         current_menu = main_menu()
         current_option = 0
     else:
         play_music("coffeeTime_loop")
         UI_switch_tag = "测试时记得美化UI!"
+        play_voice("UIoff")
         print_t("好的,我不会去美化UI的")
         current_menu = main_menu()
         current_option = 0
