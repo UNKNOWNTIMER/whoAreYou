@@ -3,13 +3,14 @@ import threading
 import sys
 import os
 import random
-from RNG.RNG_list import random_game,random_game_element
+from RNG.RNG_list import random_game,random_game_element,random_Experience
 from RNG.pixelMan import create_pixel_person
 from api_llama3.engine_llama3 import client,run_aIgame_in_cmd,game_code,wiki_human,Experience_code
 from api_llama3.chat_preprocessing import extract_and_save_code,extract_info
 from text_QA import QA
 def main_menu():
-    return ["让我瞧瞧你的推荐信!", "你有什么经验分享给我吗?", "我想测试下你的游戏开发水平","让我再玩一次你写的游戏!", "下一位"]
+    global RNG_Experience
+    return ["让我瞧瞧你的推荐信!", "你有关于"+RNG_Experience+"内容分享给我吗?", "我想测试下你的游戏开发水平","让我再玩一次你写的游戏!", "下一位"]
 
 def UI_switch():
     global UI_flag,UI_switch_tag,current_menu, current_option,voice_p
@@ -61,11 +62,10 @@ def story():
 
 #作为这个程序员分享经验
 def share_experience():
-    global voice_p,client,name,background,game_Experience
+    global voice_p,client,game_Experience
     voice_p.stop()
     play_voice("showme")
-    Experience_code(client,name,background,game_Experience)
-    print_t("分享一些经验。")
+    print_t(game_Experience)
     return
 #程序生成程序代码选择1
 def op_1():
@@ -138,17 +138,22 @@ def test_game_dev():
     return
 #下一位面试者
 def next_person():
-    global second_image_path,result_text,name,age,gender,background,game_flag,b_image,voice_p
+    global second_image_path,result_text,name,age,gender,background,game_flag,b_image,voice_p,RNG_Experience
+    global current_menu 
     os.system('cls')
     voice_p.stop()
     play_voice("next")
     print("###"+name+"退出了面试软件###\n###正在建立下一位面试者的连接中,请稍等###\n\n虽然"+name+"面无表情,但是你还是从他30X30的像素脸庞上捕捉到了一丝不甘")
     name, age, gender, background = extract_info(wiki_human(client))
     print_t ("您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁")
+    RNG_Experience = random_Experience()
+    #调用模型中生成的人物再生成回答
+    game_Experience = Experience_code(client,name,background,RNG_Experience)
     second_image_index = random.randint(1, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
     b_image = pygame.image.load('background\\BG\\BG_'+str(random.randint(0,7))+'.png') 
     game_flag = 0
+    current_menu = main_menu()
     return  
 #用来控制pygame打印对话
 def print_t(result_t):
@@ -201,11 +206,15 @@ if __name__ == "__main__":
     global current_menu, current_option,tag_1,tag_2,tag_3,name, age, gender, background,second_image_path,result_text,random_game_type1,random_game_type2,random_game_type3
     global text_lines,random_game_element1,random_game_element2,random_game_element3,b_image
     global UI_flag,UI_switch_tag,game_flag,button0,button1,voice_p
-    
+    global game_Experience,RNG_Experience
     os.system('cls')#清理掉启动信息
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
     #调用模型中生成的人物信息
     name, age, gender, background = extract_info(wiki_human(client))
+    #调用随机参数保存
+    RNG_Experience = random_Experience()
+    #调用模型中生成的人物再生成回答
+    game_Experience = Experience_code(client,name,background,RNG_Experience)
     #初始化全局设置开关
     UI_flag = 1#是否启用LLM用于美化LLM模型写的程序
     game_flag = 0#检查是否生成了extrated_game_code.py游戏代码文件
@@ -281,7 +290,7 @@ if __name__ == "__main__":
         # 选项系统,收纳了所有的选项,用于调用函数。
         menu_functions = {
             "让我瞧瞧你的推荐信!": story,
-            "你有什么经验分享给我吗?": share_experience,
+            "你有关于"+RNG_Experience+"内容分享给我吗?": share_experience,
             "我想测试下你的游戏开发水平": test_game_dev,
             "让我再玩一次你写的游戏!":game_again,
             "下一位": next_person,
