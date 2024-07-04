@@ -5,7 +5,7 @@ import os
 import random
 from RNG.RNG_list import random_game,random_game_element
 from RNG.pixelMan import create_pixel_person
-from api_llama3.engine_llama3 import run_aIgame_in_cmd,game_code,client,wiki_human
+from api_llama3.engine_llama3 import client,run_aIgame_in_cmd,game_code,wiki_human,Experience_code
 from api_llama3.chat_preprocessing import extract_and_save_code,extract_info
 from text_QA import QA
 def main_menu():
@@ -61,9 +61,10 @@ def story():
 
 #作为这个程序员分享经验
 def share_experience():
-    global voice_p
+    global voice_p,client,name,background,game_Experience
     voice_p.stop()
     play_voice("showme")
+    Experience_code(client,name,background,game_Experience)
     print_t("分享一些经验。")
     return
 #程序生成程序代码选择1
@@ -75,11 +76,9 @@ def op_1():
     print_t(random_game_type1)
     game_flag = 1
     game_txet = game_code(client,random_game_element1,random_game_type1)
-    #print(game_txet)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
     thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
-    thread.start()
-    #run_aIgame_in_cmd(client)    
+    thread.start() 
     return
 #程序生成程序代码选择2
 def op_2():
@@ -87,11 +86,9 @@ def op_2():
     voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element2,random_game_type2,UI_flag
-    
     print_t(random_game_type2)
     game_flag = 1
     game_txet = game_code(client,random_game_element2,random_game_type2)
-    #print(game_txet)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
     thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
     thread.start()
@@ -105,7 +102,6 @@ def op_3():
     print_t(random_game_type3)
     game_flag = 1
     game_txet = game_code(client,random_game_element3,random_game_type3)
-    #print(game_txet)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
     thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
     thread.start()
@@ -142,7 +138,7 @@ def test_game_dev():
     return
 #下一位面试者
 def next_person():
-    global second_image_path,result_text,name, age, gender,background,game_flag,b_image,voice_p
+    global second_image_path,result_text,name,age,gender,background,game_flag,b_image,voice_p
     os.system('cls')
     voice_p.stop()
     play_voice("next")
@@ -159,13 +155,11 @@ def print_t(result_t):
     global result_text
     result_text = result_t
     text_lines = wrap_text(result_text, 26)
-    #行间距控制
-    y_offset = 10
+    y_offset = 10  #行间距控制
     for line in text_lines:
         text_surface = font.render(line, True, (255, 255, 255))
         screen.blit(text_surface, (50, y_offset))
         y_offset += font.get_linesize()
-    # 更新屏幕显示
     return
 #自动提行    
 def wrap_text(text, chars_per_line):
@@ -182,7 +176,7 @@ def wrap_text(text, chars_per_line):
             break
     return lines
 
-#播放BGM
+#BGM控制函数
 def play_music(music_file):
     # 停止
     pygame.mixer.music.stop()
@@ -192,7 +186,7 @@ def play_music(music_file):
     pygame.mixer.music.play(-1)
     return
     
-#播放语音
+#播放角色语音
 def play_voice(voice_file):
     global voice_p
     # 不同的语音读取
@@ -297,7 +291,6 @@ if __name__ == "__main__":
             tag_3: op_3,
             "你再想想还能写什么?": return_to_main
         }
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -320,7 +313,6 @@ if __name__ == "__main__":
             color = (255, 255, 255) if idx == current_option else (100, 100, 100)
             option_surface = font.render(option, True, color)
             screen.blit(option_surface, (50, 50 + idx * 50))
-
         # 填充背景色
         screen.fill(black)
         screen.blit(b_image,(0, 0))
@@ -328,7 +320,6 @@ if __name__ == "__main__":
         screen.blit(character_image, (10, screen_height - character_image.get_height() - 10))
         # 显示第二张图片在右上角
         screen.blit(second_image, (screen_width - second_image.get_width() + 20, 20))
-
         # 显示中间选项系统
         for idx, option in enumerate(current_menu):
             option_surface = font.render(option, True, white if idx == current_option else (100, 100, 100))
