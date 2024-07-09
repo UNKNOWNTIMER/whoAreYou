@@ -9,7 +9,8 @@ from api_llama3.engine_llama3 import client,run_aIgame_in_cmd,game_code,wiki_hum
 from api_llama3.chat_preprocessing import extract_and_save_code,extract_info
 from text_QA import QA
 def main_menu():
-    global RNG_Experience
+    global RNG_Experience,flag_menu
+    flag_menu = 1
     return ["让我瞧瞧你的推荐信!", "你有关于"+RNG_Experience+"内容分享给我吗?", "我想测试下你的游戏开发水平","让我再玩一次你写的游戏!", "下一位"]
 
 def UI_switch():
@@ -49,7 +50,8 @@ def game_again():
     return
 
 def game_dev_menu():
-    global tag_1,tag_2,tag_3,RNG_Experience,random_game_element2,random_game_type2,random_game_element3,random_game_type3
+    global tag_1,tag_2,tag_3,RNG_Experience,random_game_element2,random_game_type2,random_game_element3,random_game_type3,flag_menu
+    flag_menu = 0
     #刷新
     tag_1 = "既然你对"+RNG_Experience+"很有了解,那么编写一个和它相关的游戏吧!"
     tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
@@ -114,7 +116,7 @@ def op_3():
 #返回菜单
 def return_to_main():
     global current_menu, current_option, tag_1, tag_2, tag_3,random_game_type1,random_game_type2,random_game_type3
-    global RNG_Experience,random_game_element2,random_game_element3,voice_p
+    global RNG_Experience,random_game_element2,random_game_element3,voice_p,loge_7,loge_8
     current_menu = main_menu()
     current_option = 0
     play_music("coffeeTime_loop")
@@ -126,6 +128,8 @@ def return_to_main():
     random_game_type3 = random_game()
     random_game_element2 = random_game_element()
     random_game_element3 = random_game_element()
+    loge_7 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
+    loge_8 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
     return
 #二级菜单，LLM游戏开发选择
 def test_game_dev():
@@ -140,7 +144,7 @@ def test_game_dev():
 #下一位面试者
 def next_person():
     global second_image_path,result_text,name,age,gender,background,game_flag,b_image,voice_p,RNG_Experience
-    global current_menu,game_Experience
+    global current_menu,game_Experience,loge_1
     os.system('cls')
     voice_p.stop()
     play_voice("next")
@@ -153,6 +157,7 @@ def next_person():
     second_image_index = random.randint(1, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
     b_image = pygame.image.load('background\\BG\\BG_'+str(random.randint(0,7))+'.png') 
+    loge_1 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
     game_flag = 0
     current_menu = main_menu()
     return  
@@ -208,6 +213,7 @@ if __name__ == "__main__":
     global text_lines,random_game_element1,random_game_element2,random_game_element3,b_image
     global UI_flag,UI_switch_tag,game_flag,button0,button1,voice_p
     global game_Experience,RNG_Experience
+    global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu
     os.system('cls')#清理掉启动信息
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
     #调用模型中生成的人物信息
@@ -218,6 +224,7 @@ if __name__ == "__main__":
     game_Experience = Experience_code(client,name,background,RNG_Experience)
     #初始化全局设置开关
     UI_flag = 1#是否启用LLM用于美化LLM模型写的程序
+    flag_menu = 1#检查是在主菜单还是子菜单
     game_flag = 0#检查是否生成了extrated_game_code.py游戏代码文件
     
     # 初始化pygame
@@ -229,8 +236,18 @@ if __name__ == "__main__":
     #边框大小
     screen_width = 800
     screen_height = 500
+    #初始化图像
     icon = pygame.image.load('background\\TIMER.png')
     b_image = pygame.image.load('background\\BG\\BG_'+str(random.randint(0,7))+'.png') 
+    loge_0 = pygame.image.load('background\\Skillicon\\L_M00.png')
+    loge_1 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
+    loge_2 = pygame.image.load('background\\Skillicon\\L_M02.png')
+    loge_3 = pygame.image.load('background\\Skillicon\\L_M03.png')
+    loge_4 = pygame.image.load('background\\Skillicon\\L_M04.png')
+    loge_5 = pygame.image.load('background\\Skillicon\\L_M05.png')
+    loge_7 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
+    loge_8 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
+    loge_9 = pygame.image.load('background\\Skillicon\L_M01.png')
     #logo TIMER
     pygame.display.set_icon(icon)
     #屏幕初始化
@@ -323,8 +340,30 @@ if __name__ == "__main__":
         # 填充背景色
         screen.fill(black)
         screen.blit(b_image,(0, 0))
+        if flag_menu:
+            if current_option == 0:
+                screen.blit(loge_0,(320, 288))
+            elif current_option == 1:
+                screen.blit(loge_1,(245, 328))
+            elif current_option == 2:
+                screen.blit(loge_2,(275, 368))
+            elif current_option == 3:
+                screen.blit(loge_3,(293, 408))
+            elif current_option == 4:
+                screen.blit(loge_4,(394, 448))
+        else:
+            if current_option == 0:
+                screen.blit(loge_5,(307, 288))
+            elif current_option == 1:                
+                screen.blit(loge_1,(140, 288))
+            elif current_option == 2:                
+                screen.blit(loge_7,(140, 368))
+            elif current_option == 3:                
+                screen.blit(loge_8,(130, 408))
+            elif current_option == 4:                
+                screen.blit(loge_9,(321, 448))
         # 显示图片在左下角
-        screen.blit(character_image, (10, screen_height - character_image.get_height() - 10))
+        screen.blit(character_image, (0, screen_height - character_image.get_height() - 10))
         # 显示第二张图片在右上角
         screen.blit(second_image, (screen_width - second_image.get_width() + 20, 20))
         # 显示中间选项系统
