@@ -49,7 +49,11 @@ def game_again():
     return
 
 def game_dev_menu():
-    global tag_1,tag_2,tag_3
+    global tag_1,tag_2,tag_3,RNG_Experience,random_game_element2,random_game_type2,random_game_element3,random_game_type3
+    #刷新
+    tag_1 = "既然你对"+RNG_Experience+"很有了解,那么编写一个和它相关的游戏吧!"
+    tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
+    tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
     return [UI_switch_tag,tag_1, tag_2, tag_3, "你再想想还能写什么?"]
 
 #讲述故事模块
@@ -57,7 +61,7 @@ def story():
     global background,voice_p
     voice_p.stop()
     play_voice("Describe")
-    print_t(background)
+    print_t("你打开了像素推荐信上面赫然写着:              "+background)
     return
 
 #作为这个程序员分享经验
@@ -72,10 +76,10 @@ def op_1():
     global voice_p,game_flag
     voice_p.stop()
     play_music("gameTime_loop")
-    global client,random_game_element1,random_game_type1,UI_flag,game_flag
+    global client,RNG_Experience,random_game_type1,UI_flag,game_flag
     print_t(random_game_type1)
     game_flag = 1
-    game_txet = game_code(client,random_game_element1,random_game_type1)
+    game_txet = game_code(client,RNG_Experience,random_game_type1)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
     thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
     thread.start() 
@@ -110,7 +114,7 @@ def op_3():
 #返回菜单
 def return_to_main():
     global current_menu, current_option, tag_1, tag_2, tag_3,random_game_type1,random_game_type2,random_game_type3
-    global random_game_element1,random_game_element2,random_game_element3,voice_p
+    global RNG_Experience,random_game_element2,random_game_element3,voice_p
     current_menu = main_menu()
     current_option = 0
     play_music("coffeeTime_loop")
@@ -120,12 +124,8 @@ def return_to_main():
     random_game_type1 = random_game()
     random_game_type2 = random_game()
     random_game_type3 = random_game()
-    random_game_element1 = random_game_element()
     random_game_element2 = random_game_element()
     random_game_element3 = random_game_element()
-    tag_1 = "我想要你编写一个"+random_game_element1+"有关的"+random_game_type1+"类型游戏!"
-    tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
-    tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
     return
 #二级菜单，LLM游戏开发选择
 def test_game_dev():
@@ -139,7 +139,7 @@ def test_game_dev():
 #下一位面试者
 def next_person():
     global second_image_path,result_text,name,age,gender,background,game_flag,b_image,voice_p,RNG_Experience
-    global current_menu 
+    global current_menu,game_Experience
     os.system('cls')
     voice_p.stop()
     play_voice("next")
@@ -272,10 +272,9 @@ if __name__ == "__main__":
     random_game_type1 = random_game()
     random_game_type2 = random_game()
     random_game_type3 = random_game()
-    random_game_element1 = random_game_element()
     random_game_element2 = random_game_element()
     random_game_element3 = random_game_element()
-    tag_1 = "我想要你编写一个"+random_game_element1+"有关的"+random_game_type1+"类型游戏!"
+    tag_1 = "既然你对"+RNG_Experience+"很有了解,那么编写一个和它相关的游戏吧!"
     tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
     tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
     UI_switch_tag = "记得测试时不要美化UI!"
@@ -305,18 +304,16 @@ if __name__ == "__main__":
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    current_option = (current_option - 1) % len(current_menu)
+                    current_option = (current_option - 1) % len(current_menu) #上?
                     button0.play()
                 elif event.key == pygame.K_DOWN:
-                    current_option = (current_option + 1) % len(current_menu)
+                    current_option = (current_option + 1) % len(current_menu) #下！
                     button0.play()
                 elif event.key == pygame.K_RETURN:
-                    menu_functions[current_menu[current_option]]()
+                    menu_functions[current_menu[current_option]]() #回车
                     button1.play()
                 elif event.key == pygame.K_ESCAPE:  # 按 ESC 键退出
-                    running = False
-                    
-                    
+                    running = False          
         screen.fill((0, 0, 0))
         for idx, option in enumerate(current_menu):
             color = (255, 255, 255) if idx == current_option else (100, 100, 100)
@@ -333,41 +330,11 @@ if __name__ == "__main__":
         for idx, option in enumerate(current_menu):
             option_surface = font.render(option, True, white if idx == current_option else (100, 100, 100))
             screen.blit(option_surface, (screen_width // 1.7 - option_surface.get_width() // 2, screen_height // 1.6 + idx * 40 - 20))
-
         second_image = pygame.image.load(second_image_path)
         second_image = pygame.transform.scale(second_image, (200, 200))
         #自动提行函数
         print_t(result_text)
-
         pygame.display.flip()
         # 退出pygame
-
     pygame.quit()
     sys.exit()
- 
- 
-'''
-#一些历史代码临时保存
-
-#自动化编写模块
-game_txet = game_code(client)
-#print(game_txet)
-extract_and_save_code(game_txet, 'extracted_game_code.py')
-thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,))
-thread.start()
-#run_aIgame_in_cmd(client)        
-
-#下一位
-result_text = "HR您好呀，我是XXX       %%%开发中%%%"
-second_image_index = random.randint(1, 99)  # 生成1到99的随机数
-second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
-second_image = pygame.image.load(second_image_path)
-second_image = pygame.transform.scale(second_image, (200, 200))
-
-#将人物信息处理
-name, age, gender, background = chat_preprocessing.extract_info(wiki_human(client))
-print("Name:", name)
-print("Age:", age)
-print("Gender:", gender)
-print("Background:", background,"\n")
-'''
