@@ -61,7 +61,7 @@ def story():
     global background,voice_p
     voice_p.stop()
     play_voice("Describe")
-    print_t("你打开了像素推荐信上面赫然写着:              "+background)
+    print_t("你打开了像素推荐信,上面赫然写着:             "+background)
     return
 
 #作为这个程序员分享经验
@@ -77,7 +77,7 @@ def op_1():
     voice_p.stop()
     play_music("gameTime_loop")
     global client,RNG_Experience,random_game_type1,UI_flag,game_flag
-    print_t(random_game_type1)
+    print_t("我写了一个关于"+RNG_Experience+"的游戏代码,发送到你的终端了")
     game_flag = 1
     game_txet = game_code(client,RNG_Experience,random_game_type1)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -90,7 +90,7 @@ def op_2():
     voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element2,random_game_type2,UI_flag
-    print_t(random_game_type2)
+    print_t("这是一个"+random_game_type2+"类型的游戏测试,您过目")
     game_flag = 1
     game_txet = game_code(client,random_game_element2,random_game_type2)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -103,7 +103,7 @@ def op_3():
     voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element3,random_game_type3,UI_flag
-    print_t(random_game_type3)
+    print_t("关于"+random_game_type3+"?那可是我的拿手好戏!")
     game_flag = 1
     game_txet = game_code(client,random_game_element3,random_game_type3)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -120,7 +120,7 @@ def return_to_main():
     play_music("coffeeTime_loop")
     voice_p.stop()
     play_voice("interested")
-    print_t("好吧")
+    print_t("好吧,您再看看有什么感兴趣的内容")
     random_game_type1 = random_game()
     random_game_type2 = random_game()
     random_game_type3 = random_game()
@@ -129,11 +129,12 @@ def return_to_main():
     return
 #二级菜单，LLM游戏开发选择
 def test_game_dev():
-    global current_menu, current_option,voice_p
+    global current_menu, current_option,voice_p,name
     current_menu = game_dev_menu()
     play_music("menu_loop")
     voice_p.stop()
     play_voice("test")
+    print_t(name+"透过那为数不多的像素框看着你,满脸期待")
     current_option = 0
     return
 #下一位面试者

@@ -45,7 +45,6 @@ def random_country():
     ]  
     # 随机选择一个国家并返回
     return random.choice(countries)
-
 #随机游戏类型
 def random_game():
     game_types = [
@@ -71,7 +70,6 @@ def random_game():
         "电子竞技", "无人机竞赛", "机器人竞赛", "逃脱室", "宝藏狩猎"
     ]
     return random.choice(game_types)
-
 #随机游戏元素
 def random_game_element():
     game_elements = [
