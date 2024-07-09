@@ -154,7 +154,7 @@ def next_person():
     RNG_Experience = random_Experience()
     #调用模型中生成的人物再生成回答
     game_Experience = Experience_code(client,name,background,RNG_Experience)
-    second_image_index = random.randint(1, 99)  # 生成1到99的随机数
+    second_image_index = random.randint(0, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
     b_image = pygame.image.load('background\\BG\\BG_'+str(random.randint(0,7))+'.png') 
     loge_1 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
@@ -281,7 +281,7 @@ if __name__ == "__main__":
     character_image = pygame.image.load(character_image_path)
     character_image = pygame.transform.scale(character_image, (200, 200))  # 调整图片大小
     # 随机加载第二张图片
-    second_image_index = random.randint(1, 99)  # 生成1到99的随机数
+    second_image_index = random.randint(0, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
     second_image = pygame.image.load(second_image_path)
     second_image = pygame.transform.scale(second_image, (200, 200))
@@ -359,7 +359,7 @@ if __name__ == "__main__":
             elif current_option == 2:                
                 screen.blit(loge_7,(140, 368))
             elif current_option == 3:                
-                screen.blit(loge_8,(130, 408))
+                screen.blit(loge_8,(120, 408))
             elif current_option == 4:                
                 screen.blit(loge_9,(321, 448))
         # 显示图片在左下角
