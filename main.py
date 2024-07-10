@@ -57,8 +57,8 @@ def game_dev_menu():
     tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
     tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
     return [UI_switch_tag,tag_1, tag_2, tag_3, "你再想想还能写什么?"]
-
 #讲述故事模块
+
 def story():
     global background,voice_p
     voice_p.stop()
@@ -138,7 +138,7 @@ def test_game_dev():
     play_music("menu_loop")
     voice_p.stop()
     play_voice("test")
-    print_t(name+"透过那为数不多的像素框看着你,满脸期待")
+    print_t(name+"透过那为数不多的像素眼睛看着你,满脸期待...")
     current_option = 0
     return
 #下一位面试者

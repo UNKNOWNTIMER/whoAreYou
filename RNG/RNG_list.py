@@ -1,6 +1,6 @@
+#seed_RNG_list作用并不是直接用到程序中的,更主要用来充当自然语言中的随机种子.
 import random
-
-# GPT回答的大部分国家，（少了您的国家不是我的错~是GPT的错）用来让模型的调用顺序，回答随机化。
+# GPT回答的大部分国家，（少了您的国家不是我的错~是GPT的错）QA随机化。
 def random_country():
     countries = [
         "阿富汗", "阿尔巴尼亚", "阿尔及利亚", "安道尔", "安哥拉",
@@ -45,7 +45,7 @@ def random_country():
     ]  
     # 随机选择一个国家并返回
     return random.choice(countries)
-#随机游戏类型
+#用于随机化QA的随机游戏类型
 def random_game():
     game_types = [
         "动作", "冒险", "角色扮演", "模拟",
@@ -70,7 +70,7 @@ def random_game():
         "电子竞技", "无人机竞赛", "机器人竞赛", "逃脱室", "宝藏狩猎"
     ]
     return random.choice(game_types)
-#随机游戏元素
+#用于随机化QA的随机游戏元素
 def random_game_element():
     game_elements = [
         "开放世界", "收集资源", "任务系统", "角色定制", "技能树",
