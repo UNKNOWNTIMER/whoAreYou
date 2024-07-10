@@ -43,7 +43,7 @@ def game_again():
     if not game_flag:
         print_t("哎?我还什么都没写呢")
     else:
-        print_t("好滴!请您查看CMD窗口")
+        print_t("好滴!请您查看终端窗口")
         play_music("gameTime_loop")
         thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
         thread.start()
@@ -213,7 +213,7 @@ if __name__ == "__main__":
     global text_lines,random_game_element1,random_game_element2,random_game_element3,b_image
     global UI_flag,UI_switch_tag,game_flag,button0,button1,voice_p
     global game_Experience,RNG_Experience
-    global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu
+    global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu,character_image,face_image
     os.system('cls')#清理掉启动信息
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
     #调用模型中生成的人物信息
@@ -277,15 +277,15 @@ if __name__ == "__main__":
             img = create_pixel_person()
             img.save(os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{i}.png"))
     # 加载图片只加载第一张序列图
-    character_image_path = os.path.join(folder_path, "Transparent_Pixel_Art_Person_0.png")
-    character_image = pygame.image.load(character_image_path)
+    character_image = pygame.image.load('background\\Eily\\body\\Eily_body_'+str(random.randint(0,19))+'.png')
     character_image = pygame.transform.scale(character_image, (200, 200))  # 调整图片大小
+    face_image = pygame.image.load('background\\Eily\\face\\Eily_face_'+str(random.randint(0,19))+'.png')
+    face_image = pygame.transform.scale(face_image, (200, 200))  # 调整图片大小
     # 随机加载第二张图片
     second_image_index = random.randint(0, 99)  # 生成1到99的随机数
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
     second_image = pygame.image.load(second_image_path)
     second_image = pygame.transform.scale(second_image, (200, 200))
-
     #初始化子选项
     random_game_type1 = random_game()
     random_game_type2 = random_game()
@@ -330,6 +330,11 @@ if __name__ == "__main__":
                 elif event.key == pygame.K_RETURN:
                     menu_functions[current_menu[current_option]]() #回车
                     button1.play()
+                    #刷新角色
+                    character_image = pygame.image.load('background\\Eily\\body\\Eily_body_'+str(random.randint(0,19))+'.png')
+                    character_image = pygame.transform.scale(character_image, (200, 200))  # 调整图片大小
+                    face_image = pygame.image.load('background\\Eily\\face\\Eily_face_'+str(random.randint(0,19))+'.png')
+                    face_image = pygame.transform.scale(face_image, (200, 200))  # 调整图片大小
                 elif event.key == pygame.K_ESCAPE:  # 按 ESC 键退出
                     running = False          
         screen.fill((0, 0, 0))
@@ -362,9 +367,11 @@ if __name__ == "__main__":
                 screen.blit(loge_8,(120, 408))
             elif current_option == 4:                
                 screen.blit(loge_9,(321, 448))
-        # 显示图片在左下角
+        #身体与脸的显示
         screen.blit(character_image, (0, screen_height - character_image.get_height() - 10))
-        # 显示第二张图片在右上角
+        #哈哈,面部抖动表情,要是不喜欢就移除random.randint(-3,3)吧~
+        screen.blit(face_image, (random.randint(-3,3), screen_height - face_image.get_height() - 10))
+        # 生成角色在右上角
         screen.blit(second_image, (screen_width - second_image.get_width() + 20, 20))
         # 显示中间选项系统
         for idx, option in enumerate(current_menu):
