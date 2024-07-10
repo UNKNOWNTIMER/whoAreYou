@@ -1,4 +1,4 @@
-from RNG.RNG_list import random_country
+from RNG.RNG_list import random_country,random_game_element,random_Experience,random_game
 import random
 global _country,change_language
 change_language = "中文"
@@ -29,15 +29,12 @@ def ui_YourExperience(name,background,RNG_Experience):
 
 #程序菜单随机关键词代码构造
 def RNG_random_country():
-    
     return
 
 def RNG_random_game():
-    
     return
 
 def random_game_element():
-    
     return
 
 def RNG_random_Experience():

@@ -1,1 +1,8 @@
+如果都不能用了可以前去
+https://build.nvidia.com/explore/discover#llama3-70b        
+Get API Key注册并免费获取密匙
+
+###复制一条到api_key.txt就行###
+______________________________________________________________________
 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
+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
