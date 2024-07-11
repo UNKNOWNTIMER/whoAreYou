@@ -218,7 +218,9 @@ if __name__ == "__main__":
     global game_Experience,RNG_Experience
     global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu,character_image,face_image,f_out
     f_out = 0
-    #生成主程序程序
+    
+    #生成真RNG主程序调用,因为我觉得不太稳定所以暂时不启用,如果真有人感兴趣我再更新
+    '''
     while not os.path.exists("generated_data/generated_RNG_type/RNG_random_game.py"):
         save_program(C_RNG_random_game(client), 'RNG_random_game.py')
         time.sleep(1)
@@ -242,6 +244,13 @@ if __name__ == "__main__":
         if os.path.exists("generated_data/generated_RNG_type/RNG_random_Experience.py" or f_out == 4):
             print("File has been successfully created.")
             break
+            
+    #生成的代码导入程序
+    from  generated_data.generated_RNG_type.RNG_random_game import random_game
+    from  generated_data.generated_RNG_type.RNG_random_game_element import random_game_element
+    from  generated_data.generated_RNG_type.RNG_random_Experience import random_Experience
+    '''
+    
     #清理掉启动信息   
     os.system('cls')
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
