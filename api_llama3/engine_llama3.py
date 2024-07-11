@@ -99,7 +99,7 @@ def game_code(client,A_element,B_type):
     context.append({"role": "user", "content": user_input})
     response = generate_response(client, context)
     context.append({"role": "assistant", "content": response})
-    user_input = "给代码添加更多内容以及丰富的故事,更多的功能,玩家交互方式为输入数字,让代码完善,提供更多的用户UI交互提示"
+    user_input = "给代码添加更多内容以及丰富的故事,更多的功能,玩家交互方式为输入数字,提供完善的用户UI交互提示"
     context.append({"role": "user", "content": user_input})
     voice_b.stop()
     play_voice("almost")

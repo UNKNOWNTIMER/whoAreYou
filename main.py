@@ -2,6 +2,7 @@ import pygame
 import threading
 import sys
 import os
+import time
 import random
 from RNG.RNG_list import random_game,random_game_element,random_Experience
 from api_llama3.chat_preprocessing import extract_and_save_code,extract_info,save_program
@@ -215,13 +216,34 @@ if __name__ == "__main__":
     global text_lines,random_game_element1,random_game_element2,random_game_element3,b_image
     global UI_flag,UI_switch_tag,game_flag,button0,button1,voice_p
     global game_Experience,RNG_Experience
-    global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu,character_image,face_image
-    """
-    save_program(C_RNG_random_game(client), 'RNG_random_game.py')
-    save_program(C_RNG_element(client), 'RNG_random_game_element.py')
-    save_program(C_RNG_Experience(client), 'RNG_random_Exper ience.py')
-    """
-    os.system('cls')#清理掉启动信息
+    global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu,character_image,face_image,f_out
+    f_out = 0
+    #生成主程序程序
+    while not os.path.exists("generated_data/generated_RNG_type/RNG_random_game.py"):
+        save_program(C_RNG_random_game(client), 'RNG_random_game.py')
+        time.sleep(1)
+        f_out += 1 
+        if os.path.exists("generated_data/generated_RNG_type/RNG_random_game.py") or f_out == 4:
+            print("File has been successfully created.")
+            break
+    f_out = 0      
+    while not os.path.exists("generated_data/generated_RNG_type/RNG_random_game_element.py"):
+        save_program(C_RNG_element(client), 'RNG_random_game_element.py')
+        time.sleep(1)
+        f_out += 1
+        if os.path.exists("generated_data/generated_RNG_type/RNG_random_game_element.py" or f_out == 4):
+            print("File has been successfully created.")
+            break
+    f_out = 0
+    while not os.path.exists("generated_data/generated_RNG_type/RNG_random_Experience.py"):
+        save_program(C_RNG_Experience(client), 'RNG_random_Experience.py')
+        time.sleep(1) 
+        f_out += 1
+        if os.path.exists("generated_data/generated_RNG_type/RNG_random_Experience.py" or f_out == 4):
+            print("File has been successfully created.")
+            break
+    #清理掉启动信息   
+    os.system('cls')
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
     #调用模型中生成的人物信息
     name, age, gender, background = extract_info(wiki_human(client))
