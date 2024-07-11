@@ -28,22 +28,18 @@ def ui_YourExperience(name,background,RNG_Experience):
     return ui_Experience
 
 #程序菜单随机关键词代码构造
-def RNG_random_country():
-    return
-
 def RNG_random_game():
-    return
+    global change_language
+    RNG_game = "def random_game():game_types = [\""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\",  \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\",\""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\",] return random.choice(game_types)根据以上代码,在代码原本基础上扩写100个"+change_language+"的随机关键词内容关于游戏类型,不重复,python结构代码"
+    return RNG_game
 
-def random_game_element():
-    return
+def RNG_random_game_element():
+    global change_language
+    RNG_element = "def random_game_element():game_elements = [\""+random_game_element()+"\", \""+random_game_element()+"\", \""+random_game_element()+"\",  \""+random_game_element()+"\", \""+random_game_element()+"\", \""+random_game_element()+"\", \""+random_game_element()+"\", \""+random_game_element()+"\",\""+random_game_element()+"\", \""+random_game_element()+"\", \""+random_game_element()+"\", \""+random_game_element()+"\",] return random.choice(game_elements)根据以上代码,在代码原本基础上扩写100个"+change_language+"的随机关键词关于游戏内容,不重复,python结构代码"
+    return RNG_element
 
 def RNG_random_Experience():
-    
-    """
-    def random_Experience(): 
-        game_Experience = ["经验", "故事", "奇闻趣事",  "审计", "会计", "统计", "算法", "编程","历史片段", "个人见解", "生活技巧", "职业建议", "旅行回忆", "美食体验", "读书笔记",] 
-        return random.choice(game_Experience)
-    根据以上代码,在代码原本基础上扩写100个随机关键词内容,python结构代码
-    """
-    return
+    global change_language
+    RNG_Experience = "def random_Experience():game_Experience = [\""+random_Experience()+"\", \""+random_Experience()+"\", \""+random_Experience()+"\",  \""+random_Experience()+"\", \""+random_Experience()+"\", \""+random_Experience()+"\", \""+random_Experience()+"\", \""+random_Experience()+"\",\""+random_Experience()+"\", \""+random_Experience()+"\", \""+random_Experience()+"\", \""+random_Experience()+"\",] return random.choice(game_Experience)根据以上代码,在代码原本基础上扩写100个"+change_language+"的随机关键词内容,不重复,python结构代码"
+    return RNG_Experience
 

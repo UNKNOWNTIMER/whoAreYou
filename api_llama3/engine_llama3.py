@@ -8,7 +8,6 @@ import pygame
 import random
 from openai import OpenAI
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from api_llama3 import chat_preprocessing
 from text_QA import QA
 
 global voice_b
@@ -64,7 +63,32 @@ def wiki_human(client):
     #context.append({"role": "assistant", "content": response})
     return response 
 
-#这里是调用的游戏程序询问。client,A_element,B_type为不同词语元素
+#这里是程序本身的构建。通过QA来为程序本身写入随机代码元素
+def C_RNG_random_game(client):
+    os.system('cls')
+    print("\n\n%%%%%%%%%%%%%%%%%%%创造世界%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%生成图像%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%构建程序%%%%%%%%%%%%%%%%%%%\n")
+    context = []
+    user_input = QA.RNG_random_game()
+    context.append({"role": "user", "content": user_input})
+    response = generate_response(client, context)
+    os.system('cls')
+    return response 
+
+def C_RNG_element(client):
+    context = []
+    user_input = QA.RNG_random_game_element()
+    context.append({"role": "user", "content": user_input})
+    response = generate_response(client, context)
+    return response 
+
+def C_RNG_Experience(client):
+    context = []
+    user_input = QA.RNG_random_Experience()
+    context.append({"role": "user", "content": user_input})
+    response = generate_response(client, context)
+    return response 
+
+#这里是用程序写游戏程序的调用。client,A_element,B_type为不同词语元素
 def game_code(client,A_element,B_type):
     global voice_b
     os.system('cls')

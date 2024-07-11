@@ -4,10 +4,11 @@ import sys
 import os
 import random
 from RNG.RNG_list import random_game,random_game_element,random_Experience
+from api_llama3.chat_preprocessing import extract_and_save_code,extract_info,save_program
+from api_llama3.engine_llama3 import client,run_aIgame_in_cmd,game_code,wiki_human,Experience_code,C_RNG_random_game,C_RNG_element,C_RNG_Experience
 from RNG.pixelMan import create_pixel_person
-from api_llama3.engine_llama3 import client,run_aIgame_in_cmd,game_code,wiki_human,Experience_code
-from api_llama3.chat_preprocessing import extract_and_save_code,extract_info
 from text_QA import QA
+#通过LLM构建库,重构新的RNG
 def main_menu():
     global RNG_Experience,flag_menu
     flag_menu = 1
@@ -208,12 +209,18 @@ def play_voice(voice_file):
     return
 
 if __name__ == "__main__":
+    
     #这一块为全局变量,反正都用python了,程序体量也不大,就不节约内存了直接摆~嘿嘿O(∩_∩)O
     global current_menu, current_option,tag_1,tag_2,tag_3,name, age, gender, background,second_image_path,result_text,random_game_type1,random_game_type2,random_game_type3
     global text_lines,random_game_element1,random_game_element2,random_game_element3,b_image
     global UI_flag,UI_switch_tag,game_flag,button0,button1,voice_p
     global game_Experience,RNG_Experience
     global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu,character_image,face_image
+    """
+    save_program(C_RNG_random_game(client), 'RNG_random_game.py')
+    save_program(C_RNG_element(client), 'RNG_random_game_element.py')
+    save_program(C_RNG_Experience(client), 'RNG_random_Exper ience.py')
+    """
     os.system('cls')#清理掉启动信息
     print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
     #调用模型中生成的人物信息
