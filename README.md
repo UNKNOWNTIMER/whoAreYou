@@ -13,10 +13,10 @@
    **As usual, you're watching the morning light casting patterns on the desktop, slightly lost in thought, when your laptop chimes with a notification. With coffee in your left hand, you open the remote interview software by your bed. The programmer logs on for the interview and greets you...**
 
 ## Key Features
+* The main purpose of this demo is to test whether the program under this framework can have extensible, generative capabilities. Personally, I hope the LLM can foster the development of game architecture and creation, encouraging more developers to see that LLMs can be used not just in conversational settings but as a comprehensive mechanism in game programming. This approach allows for playing during development and lets players unconsciously expand the game itself.
+    - Unlike traditional game architectures, this game employs an LLM (Large Language Model) as its core engine.
+    - 使用英伟达云端API进行快速推理运算
 
-* Unlike traditional game architectures, this game employs an LLM (Large Language Model) as its core engine.
-* 使用英伟达云端API进行快速推理运算
-  - XXX
 
 <h1 align="center">
   <br>
