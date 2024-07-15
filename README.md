@@ -2,7 +2,6 @@
   <br>
   <a href="https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa"><img src="readmedata/cover2.jpg" alt="WHOAREYOU" width="1600"></a>
   <br>
-  <p align="center">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-red" alt="License"></a>
 </p>
   <strong style="font-weight: bold; font-size: 40px;">-WhoAreYou-</strong>
@@ -18,6 +17,12 @@
 * Unlike traditional game architectures, this game employs an LLM (Large Language Model) as its core engine.
 * 使用英伟达云端API进行快速推理运算
   - XXX
+
+<h1 align="center">
+  <br>
+    <img src="readmedata/(CN)technologicalProcess.jpg" alt="WHOAREYOU" width="600"></a>
+  <br>
+</h1
 
 ## Download
 
