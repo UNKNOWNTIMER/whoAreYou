@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-blue" alt="License">
+    <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-red" alt="License">
   </a>
 </p>
 <p align="center">
@@ -29,7 +29,7 @@
 ## Key Features
 
 * 不同于传统的游戏架构，该游戏采用了LLM作为核心运行
-* 使用了英伟达的云端API进行快速推理运算
+* 使用英伟达云端API进行快速推理运算
   - While you type, LivePreview will automatically scroll to the current location you're editing.
 * GitHub Flavored Markdown
 * Syntax highlighting
@@ -72,45 +72,25 @@ You can [download](https://github.com/amitmerchant1990/electron-markdownify/rele
 
 ## Emailware
 
-Markdownify is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <bullredeyes@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
+if you liked using this app or it has helped you in any way, I'd like you send me an email at <zhuyu229065165@live.com> about anything you'd want to say about this software. I'd really appreciate it!
 
 ## Credits
 
 This software uses the following open source packages:
 
-- [Electron](http://electron.atom.io/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-- [showdown](http://showdownjs.github.io/showdown/)
-- [CodeMirror](http://codemirror.net/)
-- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
-- [highlight.js](https://highlightjs.org/)
+- [openai](https://pypi.org/project/openai/)
+- [pillow](https://pypi.org/project/pillow/)
+- [Pygame](https://pypi.org/project/pygame/)
 
 ## Related
 
-[markdownify-web](https://github.com/amitmerchant1990/markdownify-web) - Web version of Markdownify
-
-## Support
-
-<a href="https://www.buymeacoffee.com/5Zn8Xh3l9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-
-<p>Or</p>
-
-<a href="https://www.patreon.com/amitmerchant">
-	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
-
-## You may also like...
-
-- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
-
-## License
-
-MIT
+[(CN)bilibili-web](https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa) - 你能在这里找到中文版本的软件的以及介绍
 
 ---
 
-> [amitmerchant.com](https://www.amitmerchant.com) &nbsp;&middot;&nbsp;
-> GitHub [@amitmerchant1990](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
-> Twitter [@amit_merchant](https://twitter.com/amit_merchant)
+> [GitHub](https://github.com/UNKNOWNTIMER) &nbsp;&middot;&nbsp;
+> [YouTube](https://www.youtube.com/@unknowntimer6854) &nbsp;&middot;&nbsp;
+> [X](https://x.com/UNKNOWNTIMER0)
+---
+## You may also like...
+Anita Dataset is a cartoon animation dataset contributed by animators who share licensed, free and professional data for academic research purposes. It contains authentic hand-drawings(i.e. tie-downs, colored sketches) from modern animation industry. We hope this open-source dataset facilitate cartoon research in providing more effective cartoon solutions. [![Project Page](https://img.shields.io/badge/Project-Website-green?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiMAAC4jAXilP3YAAALvSURBVFhHxZdL6E1BHMev9/sZFqIQIbLwimQrskBK2Yk8UigWCAuPQlEWYofIa8VSRPJOkiQ7b0qIhffb5zv3/K75j5l7zv3r8KlP58zMuef8zpyZ38xtVUlzBNvgHVf6x4zGnzjDlf4D2/EJtnClEmmZHUNG4lVUL5RKKgB9+y/V03JJBXAXJ2GqvRT0ve2bj8LvuNaVSsQfZJ1xK67AH7geN+Fe3IJvsAN2wa7YLTt2z86t3m+zc6l778ckCkAP3oeWHxbia1RvfEMNyuaql6mLBaCLlYRao9CbPcDwho16EOviByBPYjvsjeoB1akXVuLAgh5Fu995rEsYgDyF84M6BbEMi7AU7Xf3VFGPWAByD74N6uQOzJumY9Gu/4h1M2ssAHV9X5yImgV+mzyG7TGF2j6jXd8Hk8QCuI2GFqiX6LfLC9gTU1xHu3aMKnzyulBjwLiJU1Bv5DMZL+EAV/qTG9lR9M+ONfICOJMd2+ISPIGaGSHD8Qqql0L8APplxyjhJ3iHygGL8VFWl6cG61T00cpq7cqoScIA9G0VvZWL+hUXoKGV9T2q7ZAqUoQBaE3QqPWTSSNuRJt2F1F1eqkkYQDD0JiGD9HainoA1QO7svJ9TOIHoIeFdMKd2OiidBo1gHX+AZPJyA9AS7CYjZuxlytVuYX+A4r43DtPJiM/AD14iFf21/FPaDdrjuOwRiwPqIvPoqah8rd4lR2FpuTfkMwF1gOXXamKEswstL2BWIWxNyvqcoxiAaxzpTTaLWnX5N9Uv9uN+j+h3bTfFroNo1gA410pnwm4Blejv8iMwHMYe7g8jFEUwAv0/y9qjEyvnkbRcqupOdiVfqOpNhefYhiAklIUBaCs5zMT9SPt54aiDVo9WG3646rVcQ7G0D3V5RrMFkAsxzh08bzqaRMWoW1GdHyMNhWvoXY9eQzC46hPrGRU62U/K3XEHvjMlZqi4LTKaVbov4E2Jsrr2iMokKJorGxAvRSfu1L5BV6BYxc58SI5AAAAAElFTkSuQmCC)](https://zhenglinpan.github.io/AnitaDataset_homepage/)
