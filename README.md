@@ -7,10 +7,9 @@
 </h1
 
 <p align="center">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-red" alt="License">
-  </a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-red" alt="License"></a>
 </p>
+
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
