@@ -2,7 +2,7 @@
   <br>
   <a href="https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa"><img src="readmedata/cover2.jpg" alt="WHOAREYOU" width="1600"></a>
   <br>
-  <strong style="font-weight: bold; font-size: 40px;">WhoAreYou</strong>
+  <strong style="font-weight: bold; font-size: 40px;">-WhoAreYou-</strong>
   <br>
 </h1
 
@@ -11,7 +11,6 @@
     <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-blue" alt="License">
   </a>
 </p>
-
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
@@ -21,13 +20,16 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+---
+
+<!--![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)-->
+
+    **As usual, you're watching the morning light casting patterns on the desktop, slightly lost in thought, when your laptop chimes with a notification. With coffee in your left hand, you open the remote interview software by your bed. The programmer logs on for the interview and greets you...**
 
 ## Key Features
 
-* LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
-* Sync Scrolling
+* 不同于传统的游戏架构，该游戏采用了LLM作为核心运行
+* 使用了英伟达的云端API进行快速推理运算
   - While you type, LivePreview will automatically scroll to the current location you're editing.
 * GitHub Flavored Markdown
 * Syntax highlighting
