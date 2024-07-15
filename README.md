@@ -12,10 +12,9 @@
 
    **As usual, you're watching the morning light casting patterns on the desktop, slightly lost in thought, when your laptop chimes with a notification. With coffee in your left hand, you open the remote interview software by your bed. The programmer logs on for the interview and greets you...**
 
-## Key Features
+## Objective & System Architecture
 * The main purpose of this demo is to test whether the program under this framework can have extensible, generative capabilities. Personally, I hope the LLM can foster the development of game architecture and creation, encouraging more developers to see that LLMs can be used not just in conversational settings but as a comprehensive mechanism in game programming. This approach allows for playing during development and lets players unconsciously expand the game itself.
-    - Unlike traditional game architectures, this game employs an LLM (Large Language Model) as its core engine.
-    - 使用英伟达云端API进行快速推理运算
+
 
 
 <h1 align="center">
@@ -24,6 +23,16 @@
   <br>
 </h1
 
+* Unlike traditional game architectures, this game employs an LLM (Large Language Model) as its core engine.
+    - [x] Utilize NVIDIA API for rapid inference computations.
+    - [ ] Capable of autonomously constructing the main program for generation calls.
+      - (Due to time constraints, this feature has been commented out in main.py after verification of functionality)
+    - [x] Able to generate CMD interactive mini-games using the main program.
+    - [x] Successfully enhanced the user interface of the generated mini-games by LLM.
+    - [ ] Real-time generation of diverse voices through the interactive interface.
+      - (Currently equipped with voice capabilities, but lacks real-time generation)
+    - [ ]  Integrate engine to elevate the gaming experience, transforming it into a true game.
+      - (Perhaps one day)
 ## Download
 
 You can [download](https://github.com/UNKNOWNTIMER/whoAreYou/archive/refs/heads/main.zip) whoAreYou for Windows.
@@ -36,7 +45,7 @@ $ git clone https://github.com/UNKNOWNTIMER/whoAreYou.git
 ```
 
 ## Credits
-Thanks to [NVIDIA]() for providing free open-source LLM computing services.
+Thanks to NVIDIA for providing [free compute services](https://build.nvidia.com/meta/llama3-70b) and to Meta for their open-source models([llama3-70b-instruct](https://llama.meta.com/llama3/))
 This software uses the following open source packages:
 - [openai](https://pypi.org/project/openai/)
 - [pillow](https://pypi.org/project/pillow/)
@@ -44,7 +53,7 @@ This software uses the following open source packages:
 
 ## Related
 
-[(CN)bilibili-web](https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa4) - 你能在这里找到中文版本的软件以及介绍
+[(CN)bilibili-web](https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa4) - 你能在这里找到中文版本的软件以及视频详细介绍
 
 ## You may also like...
 
@@ -53,7 +62,7 @@ This software uses the following open source packages:
     <img src="https://img.shields.io/badge/Project-Website-green?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALiMAAC4jAXilP3YAAALvSURBVFhHxZdL6E1BHMev9/sZFqIQIbLwimQrskBK2Yk8UigWCAuPQlEWYofIa8VSRPJOkiQ7b0qIhffb5zv3/K75j5l7zv3r8KlP58zMuef8zpyZ38xtVUlzBNvgHVf6x4zGnzjDlf4D2/EJtnClEmmZHUNG4lVUL5RKKgB9+y/V03JJBXAXJ2GqvRT0ve2bj8LvuNaVSsQfZJ1xK67AH7geN+Fe3IJvsAN2wa7YLTt2z86t3m+zc6l778ckCkAP3oeWHxbia1RvfEMNyuaql6mLBaCLlYRao9CbPcDwho16EOviByBPYjvsjeoB1akXVuLAgh5Fu995rEsYgDyF84M6BbEMi7AU7Xf3VFGPWAByD74N6uQOzJumY9Gu/4h1M2ssAHV9X5yImgV+mzyG7TGF2j6jXd8Hk8QCuI2GFqiX6LfLC9gTU1xHu3aMKnzyulBjwLiJU1Bv5DMZL+EAV/qTG9lR9M+ONfICOJMd2+ISPIGaGSHD8Qqql0L8APplxyjhJ3iHygGL8VFWl6cG61T00cpq7cqoScIA9G0VvZWL+hUXoKGV9T2q7ZAqUoQBaE3QqPWTSSNuRJt2F1F1eqkkYQDD0JiGD9HainoA1QO7svJ9TOIHoIeFdMKd2OiidBo1gHX+AZPJyA9AS7CYjZuxlytVuYX+A4r43DtPJiM/AD14iFf21/FPaDdrjuOwRiwPqIvPoqah8rd4lR2FpuTfkMwF1gOXXamKEswstL2BWIWxNyvqcoxiAaxzpTTaLWnX5N9Uv9uN+j+h3bTfFroNo1gA410pnwm4Blejv8iMwHMYe7g8jFEUwAv0/y9qjEyvnkbRcqupOdiVfqOpNhefYhiAklIUBaCs5zMT9SPt54aiDVo9WG3646rVcQ7G0D3V5RrMFkAsxzh08bzqaRMWoW1GdHyMNhWvoXY9eQzC46hPrGRU62U/K3XEHvjMlZqi4LTKaVbov4E2Jsrr2iMokKJorGxAvRSfu1L5BV6BYxc58SI5AAAAAElFTkSuQmCC" alt="Project Page">
   </a>
 </p>
-Anita Dataset is a cartoon animation dataset contributed by animators who share licensed, free and professional data for academic research purposes. It contains authentic hand-drawings(i.e. tie-downs, colored sketches) from modern animation industry. We hope this open-source dataset facilitate cartoon research in providing more effective cartoon solutions.
+[Anita Dataset]() is a cartoon animation dataset contributed by animators who share licensed, free and professional data for academic research purposes. It contains authentic hand-drawings(i.e. tie-downs, colored sketches) from modern animation industry. We hope this open-source dataset facilitate cartoon research in providing more effective cartoon solutions.
 
 ## References&support
 
