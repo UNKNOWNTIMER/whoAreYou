@@ -219,7 +219,7 @@ if __name__ == "__main__":
     global loge_0,loge_1,loge_2,loge_3,loge_4,loge_5,loge_7,loge_8,loge_9,flag_menu,character_image,face_image,f_out
     f_out = 0
     
-    #生成真RNG主程序调用,因为我觉得不太稳定所以暂时不启用,如果真有人感兴趣我再更新
+    #生成真RNG主程序调用,每个程序会调用4次,因为我觉得不太稳定所以暂时不启用,如果真有人感兴趣我再更新
     '''
     while not os.path.exists("generated_data/generated_RNG_type/RNG_random_game.py"):
         save_program(C_RNG_random_game(client), 'RNG_random_game.py')
