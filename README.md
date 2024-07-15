@@ -1,10 +1,9 @@
-<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 <h1 align="center">
   <br>
   <a href="https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa"><img src="readmedata/cover2.jpg" alt="WHOAREYOU" width="1600"></a>
   <br>
-  <strong style="font-weight: bold; color: black; font-size: 40px; font-family: 'hzk-pixel-12px', sans-serif;">WhoAreYou</strong>
+  <strong style="font-weight: bold; font-size: 40px;">WhoAreYou</strong>
   <br>
 </h1
 
