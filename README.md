@@ -15,7 +15,7 @@
 
 ## Key Features
 
-* 不同于传统的游戏架构，该游戏采用了LLM作为核心运行
+* Unlike traditional game architectures, this game employs an LLM (Large Language Model) as its core engine.
 * 使用英伟达云端API进行快速推理运算
   - XXX
 
