@@ -55,13 +55,10 @@ pip install -r requirements.txt
 # 到文件目录下使用pip配置环境
 py main.py
 ```
-<span style="color: red;">这是红色文字</span>
-
 >##### 提示
 第一次启动会比较慢,请稍等片刻,待程序构建完成就能开始DEMO的运行
 >##### 操作方法
-使用 ↑ 键 ↓ 键控制选择
-ENTER 键进行确认
+使用[ ↑ ]键[ ↓ ]键控制选择 [ ENTER ] 键进行确认
 ## Q&A
 
 > ##### 我的程序打开后面试者没有背景内容？
