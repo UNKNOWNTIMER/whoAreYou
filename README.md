@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa"><img src="readmedata/cover2.jpg" alt="WHOAREYOU" width="1600"></a>
+  <a href="https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa4"><img src="readmedata/cover2.jpg" alt="WHOAREYOU" width="1600"></a>
   <br>
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-red" alt="License"></a>
 </p>
@@ -36,16 +36,15 @@ $ git clone https://github.com/UNKNOWNTIMER/whoAreYou.git
 ```
 
 ## Credits
-
+Thanks to [NVIDIA]() for providing free open-source LLM computing services.
 This software uses the following open source packages:
-
 - [openai](https://pypi.org/project/openai/)
 - [pillow](https://pypi.org/project/pillow/)
 - [Pygame](https://pypi.org/project/pygame/)
 
 ## Related
 
-[(CN)bilibili-web](https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa) - 你能在这里找到中文版本的软件以及介绍
+[(CN)bilibili-web](https://www.bilibili.com/video/BV11S411c7SC/?share_source=copy_web&vd_source=0cac2b49e1352f96eceb28696ca78fa4) - 你能在这里找到中文版本的软件以及介绍
 
 ## You may also like...
 
