@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 <h1 align="center">
   <br>
