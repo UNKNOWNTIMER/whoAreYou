@@ -1,7 +1,7 @@
 from RNG.RNG_list import random_country,random_game_element,random_Experience,random_game
 import random
 global _country,change_language
-change_language = "中文"
+change_language = "英文"
 #游戏核心启动随机数,不一定为程序员,可把程序员换成其他职业都行
 def wAY():
     global change_language,_country

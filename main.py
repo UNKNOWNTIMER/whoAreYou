@@ -13,7 +13,7 @@ from text_QA import QA
 def main_menu():
     global RNG_Experience,flag_menu
     flag_menu = 1
-    return ["Let me see your recommendation letter!", "Do you have any"+RNG_Experience+"content to share with me?", "I want to test your game development skills","Let me play the game you wrote again!", "Next one"]
+    return ["Let me see your recommendation letter!", "Do you have any "+RNG_Experience+" content to share with me?", "I want to test your game development skills","Let me play the game you wrote again!", "Next one"]
 
 def UI_switch():
     global UI_flag,UI_switch_tag,current_menu, current_option,voice_p
@@ -55,10 +55,10 @@ def game_dev_menu():
     global tag_1,tag_2,tag_3,RNG_Experience,random_game_element2,random_game_type2,random_game_element3,random_game_type3,flag_menu
     flag_menu = 0
     #Refresh
-    tag_1 = "既然你对"+RNG_Experience+"很有了解,那么编写一个和它相关的游戏吧!"
-    tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
-    tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
-    return [UI_switch_tag,tag_1, tag_2, tag_3, "你再想想还能写什么?"]
+    tag_1 = "Since you know a lot about "+RNG_Experience+", then..."
+    tag_2 = "Test your ability to write a "+random_game_type2+" type game related to "+random_game_element2+""
+    tag_3 = "Then can you help me write a "+random_game_type3+" type game related to "+random_game_element3+"?"
+    return [UI_switch_tag,tag_1, tag_2, tag_3, "What else can you think of to write?"]
 
 #Storytelling module
 def story():
@@ -68,14 +68,14 @@ def story():
     print_t("You opened the pixel recommendation letter, and it clearly stated:"+background)
     return
 
-#作为这个程序员分享经验
+#Share your experience as a programmer
 def share_experience():
     global voice_p,client,game_Experience
     voice_p.stop()
     play_voice("showme")
     print_t(game_Experience)
     return
-#程序生成程序代码选择1
+#Program generates program code option 1
 def op_1():
     global voice_p,game_flag
     voice_p.stop()
@@ -88,26 +88,26 @@ def op_1():
     thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
     thread.start() 
     return
-#程序生成程序代码选择2
+#Program generates program code option 2
 def op_2():
     global voice_p,game_flag
     voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element2,random_game_type2,UI_flag
-    print_t("这是一个"+random_game_type2+"类型的游戏测试,您过目")
+    print_t("This is a "+random_game_type2+" type game test, please review it")
     game_flag = 1
     game_txet = game_code(client,random_game_element2,random_game_type2)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
     thread = threading.Thread(target=run_aIgame_in_cmd, args=(client,UI_flag))
     thread.start()
     return
-#程序生成程序代码选择3
+#Program generates program code option 3
 def op_3():
     global voice_p,game_flag
     voice_p.stop()
     play_music("gameTime_loop")
     global client,random_game_element3,random_game_type3,UI_flag
-    print_t("关于"+random_game_type3+"?那可是我的拿手好戏!")
+    print_t("About "+random_game_type3+"? That's my specialty!")
     game_flag = 1
     game_txet = game_code(client,random_game_element3,random_game_type3)
     extract_and_save_code(game_txet, 'extracted_game_code.py')
@@ -115,7 +115,7 @@ def op_3():
     thread.start()
     return
 
-#返回菜单
+#Return to Menu
 def return_to_main():
     global current_menu, current_option, tag_1, tag_2, tag_3,random_game_type1,random_game_type2,random_game_type3
     global RNG_Experience,random_game_element2,random_game_element3,voice_p,loge_7,loge_8
@@ -124,7 +124,7 @@ def return_to_main():
     play_music("coffeeTime_loop")
     voice_p.stop()
     play_voice("interested")
-    print_t("好吧,您再看看有什么感兴趣的内容")
+    print_t("Alright, see if there's anything else you're interested in")
     random_game_type1 = random_game()
     random_game_type2 = random_game()
     random_game_type3 = random_game()
@@ -133,48 +133,48 @@ def return_to_main():
     loge_7 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
     loge_8 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
     return
-#二级菜单，LLM游戏开发选择
+#Secondary Menu, LLM Game Development Options
 def test_game_dev():
     global current_menu, current_option,voice_p,name
     current_menu = game_dev_menu()
     play_music("menu_loop")
     voice_p.stop()
     play_voice("test")
-    print_t(name+"透过那为数不多的像素眼睛看着你,满脸期待...")
+    print_t(name+"looks at you through those few pixelated eyes, full of anticipation...")
     current_option = 0
     return
-#下一位面试者
+#Next interviewee
 def next_person():
     global second_image_path,result_text,name,age,gender,background,game_flag,b_image,voice_p,RNG_Experience
     global current_menu,game_Experience,loge_1
     os.system('cls')
     voice_p.stop()
     play_voice("next")
-    print("###"+name+"退出了面试软件###\n###正在建立下一位面试者的连接中,请稍等###\n\n虽然"+name+"面无表情,但是你还是从他30X30的像素脸庞上捕捉到了一丝不甘")
+    print("###"+name+" has exited the interview software###\n###Establishing connection with the next interviewee, please wait###\n\nAlthough "+name+" showed no expression, you could still catch a hint of reluctance on his 30x30 pixelated face.")
     name, age, gender, background = extract_info(wiki_human(client))
-    print_t ("您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁")
+    print_t ("Hello, I am "+name+", from "+QA._country+", and I am "+age+" years old.")
     RNG_Experience = random_Experience()
-    #调用模型中生成的人物再生成回答
+    #Call the model to generate a character and then generate the response
     game_Experience = Experience_code(client,name,background,RNG_Experience)
-    second_image_index = random.randint(0, 99)  # 生成1到99的随机数
+    second_image_index = random.randint(0, 99)  # Generate a random number between 1 and 99
     second_image_path = os.path.join(folder_path, f"Transparent_Pixel_Art_Person_{second_image_index}.png")
     b_image = pygame.image.load('background\\BG\\BG_'+str(random.randint(0,7))+'.png') 
     loge_1 = pygame.image.load('background\\Skillicon\\L ('+str(random.randint(0,32))+').png')
     game_flag = 0
     current_menu = main_menu()
     return  
-#用来控制pygame打印对话
+#Used to control Pygame to print dialog
 def print_t(result_t):
     global result_text
     result_text = result_t
-    text_lines = wrap_text(result_text, 26)
-    y_offset = 10  #行间距控制
+    text_lines = wrap_text(result_text, 80)
+    y_offset = 10  #Line spacing control
     for line in text_lines:
         text_surface = font.render(line, True, (255, 255, 255))
         screen.blit(text_surface, (50, y_offset))
         y_offset += font.get_linesize()
     return
-#自动提行    
+#Automatic line break
 def wrap_text(text, chars_per_line):
     lines = []
     while text:
@@ -253,7 +253,7 @@ if __name__ == "__main__":
     
     #清理掉启动信息   
     os.system('cls')
-    print("\n%%%%%%%%%%%%%%%%%%%对方正在远程连接中%%%%%%%%%%%%%%%%%%%")
+    print("\n%%%%%%%%%%%%%%%%%%%The other party is connecting remotely%%%%%%%%%%%%%%%%%%%")
     #调用模型中生成的人物信息
     name, age, gender, background = extract_info(wiki_human(client))
     #调用随机参数保存
@@ -298,7 +298,7 @@ if __name__ == "__main__":
     white = (255, 255, 255)
     # 加载字体，指定黑体
     font_path = 'text_QA\\hzk-pixel-12px.ttf'  # Windows中黑体的典型路径
-    font = pygame.font.Font(font_path, 24)   # pixelMan初始化运行，文件夹路径
+    font = pygame.font.Font(font_path, 16)   # pixelMan初始化运行，文件夹路径
     #初始化音乐
     play_music("coffeeTime_loop")
     button0 = pygame.mixer.Sound("music/button/down_up.wav")
@@ -307,9 +307,9 @@ if __name__ == "__main__":
     folder_path = "generated_data/pixelMan"
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)  # 创建文件夹如果不存在
-    print("\n%%%%%%%%%%%%%%%%%%%对方正在快速打字回复中%%%%%%%%%%%%%%%%%%%")
+    print("\n%%%%%%%%%%%%%%%%%%%The other party is quickly typing a reply%%%%%%%%%%%%%%%%%%%")
     if len(os.listdir(folder_path)) == 0:
-        print("\n%%%%%%%%%%%%%%%第一次面试对方有些紧张,正在打扮自己中%%%%%%%%%%%%%%%")
+        print("\n%%%%%%%%%%%%%%%The interviewee is a bit nervous for the first interview and is currently getting ready%%%%%%%%%%%%%%%")
         # 如果文件夹为空，则生成100张图片
         for i in range(100):
             img = create_pixel_person()
@@ -330,22 +330,22 @@ if __name__ == "__main__":
     random_game_type3 = random_game()
     random_game_element2 = random_game_element()
     random_game_element3 = random_game_element()
-    tag_1 = "既然你对"+RNG_Experience+"很有了解,那么编写一个和它相关的游戏吧!"
-    tag_2 = "测试一下你"+random_game_element2+"有关的"+random_game_type2+"类型游戏编写..."
-    tag_3 = "那你能帮我写一个"+random_game_element3+"有关的"+random_game_type3+"类型游戏吗?"
-    UI_switch_tag = "记得测试时不要美化UI!"
+    tag_1 = "Since you know a lot about "+RNG_Experience+", then..."
+    tag_2 = "Test your ability to write a "+random_game_type2+" type game related to "+random_game_element2+""
+    tag_3 = "Then can you help me write a "+random_game_type3+" type game related to "+random_game_element3+"?"
+    UI_switch_tag = "Remember not to beautify the UI during testing!"
     # 显示结果的文本
-    result_text ="您好呀，我是"+name+",来自"+QA._country+",今年"+age+"岁"
+    result_text ="Hello, I am "+name+", from "+QA._country+", and I am "+age+" years old."
     current_menu = main_menu()
     current_option = 0
     running = True
-    print("\n%%%对方轻敲了下麦克风,提醒您whoAreYou远程面试软件已打开,请点击切换一下窗口%%%")
+    print("\n%%%The other party tapped the microphone lightly, reminding you that the whoAreYou remote interview software is open. Please click to switch the window.%%%")
     play_voice("hello")
     while running:
         # 选项系统,收纳了所有的选项,用于调用函数。
         menu_functions = {
             "Let me see your recommendation letter!": story,
-            "Do you have any"+RNG_Experience+"content to share with me?": share_experience,
+            "Do you have any "+RNG_Experience+" content to share with me?": share_experience,
             "I want to test your game development skills": test_game_dev,
             "Let me play the game you wrote again!":game_again,
             "Next one": next_person,
@@ -353,7 +353,7 @@ if __name__ == "__main__":
             tag_1: op_1,
             tag_2: op_2,
             tag_3: op_3,
-            "你再想想还能写什么?": return_to_main
+            "What else can you think of to write?": return_to_main
         }
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
