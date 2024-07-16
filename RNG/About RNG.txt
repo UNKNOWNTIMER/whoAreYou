@@ -1,0 +1,49 @@
+RNG stands for random non-game, referring to a non-traditional way of providing random data.
+
+RNG_list is a list of random keywords that act as seeds. Since the API has conversation limits, I call it using different dialog boxes.
+Each time the model is in an initial state with no memory, aiming to keep the LLM black box system stable and regular.
+This part of the program can be automatically written by the LLM model, just like the principle of generating games automatically.
+Currently, it hasn't been written and integrated into the API yet.
+Users can ask questions like:
+game_types = [
+"Action"
+] to provide 100 different -game- types.
+
+ChatGPT:
+
+python
+
+game_types = [
+    "Action", "Adventure", "Role-playing", "Simulation",
+    "Strategy", "Sports", "Casual", "Multiplayer Online",
+    "Educational", "Sandbox", "Horror", "Management", "Puzzle",
+    "Music", "Racing", "Tactical", "Fighting", "Shooting",
+    "Tower Defense", "Card", "Text", "Survival", "Historical",
+    "Sci-fi", "Fantasy", "Supernatural", "Military", "Western",
+    "Future", "Exploration", "Open World", "Real-time Tactics", "Turn-based Strategy",
+    "Massively Multiplayer Online", "Virtual Reality", "Augmented Reality", "Social", "Family",
+    "Story-driven", "Visual Novel", "Interactive Story", "Sports",
+    "Platformer", "Mystery", "Construction", "Political", "Economic Simulation",
+    "Space Exploration", "Stealth", "Detective", "Romance", "Nurturing",
+    "Adventure", "Deep-sea Exploration", "Flight Simulation", "Animal Simulation", "Farm Management",
+    "Business Simulation", "City Building", "Racing", "Archery", "Bullfighting",
+    "Puzzle", "Suspense", "Historical Reenactment", "Fairy Tale", "Mythology",
+    "Post-apocalyptic Survival", "Mental Exploration", "Psychological Horror", "Otherworldly Exploration", "Time Travel",
+    "Religion", "Philosophy", "Poetry", "Art", "Dream Crafting",
+    "Hacking", "Cybersecurity", "Programming", "Math", "Physics",
+    "Chemistry", "Biology", "Astronomy", "Geography", "Environmental Science",
+    "Health Education", "Sports Competition", "Olympics", "Chess", "Bridge",
+    "E-sports", "Drone Racing", "Robotics Competition", "Escape Room", "Treasure Hunt"
+]
+Then it can generate a list of game types through local random operations using the keywords provided by the LLM.
+
+###Tested###
+But not yet written into the program.
+If using Meta LLaMA3-70B, the QA can provide the following structure text to obtain the extractable code:
+
+python
+
+def random_Experience(): 
+    game_Experience = ["Experience", "Story", "Anecdote", "Audit", "Accounting", "Statistics", "Algorithm", "Programming", "Historical Fragment", "Personal Insight", "Life Tips", "Career Advice", "Travel Memories", "Food Experience", "Reading Notes"]
+    return random.choice(game_Experience)
+Based on the above code, expand with 100 random keywords content in the original code structure in Python.

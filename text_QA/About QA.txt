@@ -1,0 +1,7 @@
+
+The QA framework is an architectural concept for a natural language escape program call, pending completion.
+
+'''
+This part of the program can be automatically written by the LLM model, following the same principle as the automatic generation of games.
+Currently, I haven't had time to write the QA and connect to the API.
+'''

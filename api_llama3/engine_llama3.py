@@ -1,11 +1,12 @@
 import os
-import re
+#import re
 import sys
 import subprocess
 import threading
 import queue
 import pygame
 import random
+#import time
 from openai import OpenAI
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from text_QA import QA
@@ -45,12 +46,12 @@ def read_api_key(filename):
             return file.read().strip()  # 使用 strip() 去除可能的前后空白字符
     except FileNotFoundError:
         os.system('cls') 
-        print("木有找到API钥匙文件,请前往"+"https://ai.nvidia.com/"+"\n获取免费钥匙后粘贴进api_key.txt")
+        print("No API key file found. Please visit "+"https://ai.nvidia.com/"+"\n to get a free key and paste it into api_key.txt.")
         exit()
         return None
     except Exception as e:
         os.system('cls') 
-        print(f"读取文件时发生错误?怪了：{e}")
+        print(f"Error occurred while reading the file? That's strange:{e}")
         exit()
         return None
     
@@ -66,7 +67,7 @@ def wiki_human(client):
 #这里是程序本身的构建。通过QA来为程序本身写入随机代码元素
 def C_RNG_random_game(client):
     os.system('cls')
-    print("\n\n%%%%%%%%%%%%%%%%%%%创造世界%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%生成图像%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%构建程序%%%%%%%%%%%%%%%%%%%\n")
+    print("\n\n%%%%%%%%%%%%%%%%%%%Create world%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Generate image%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Build program%%%%%%%%%%%%%%%%%%%\n")
     context = []
     user_input = QA.RNG_random_game()
     context.append({"role": "user", "content": user_input})
@@ -92,27 +93,29 @@ def C_RNG_Experience(client):
 def game_code(client,A_element,B_type):
     global voice_b
     os.system('cls')
-    print("\n\n%%%%%%%%%%%%%%%%%%%设计代码%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%调用函数%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%敲打键盘%%%%%%%%%%%%%%%%%%%\n")
+    print("\n\n%%%%%%%%%%%%%%%%%%%Design code%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Call function%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Typing keyboard%%%%%%%%%%%%%%%%%%%\n")
     play_voice("work")
     context = []
     user_input = QA.ai_game(A_element,B_type)
     context.append({"role": "user", "content": user_input})
     response = generate_response(client, context)
     context.append({"role": "assistant", "content": response})
-    user_input = "给代码添加更多内容以及丰富的故事,更多的功能,玩家交互方式为输入数字,提供完善的用户UI交互提示"
+    user_input = "Add more content to the code, including a richer story, more features, and player interactions using number inputs. Provide comprehensive user UI interaction prompts, in English."
     context.append({"role": "user", "content": user_input})
     voice_b.stop()
     play_voice("almost")
     os.system('cls')
-    print("\n\n%%%%%%%%%%%%%%%%%%%调试程序%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%寻找漏洞%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%完善交互%%%%%%%%%%%%%%%%%%%\n")
+    #print(response)
+    #time.sleep(10)
+    print("\n\n%%%%%%%%%%%%%%%%%%%Debug program%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Find vulnerabilities%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Improve interaction%%%%%%%%%%%%%%%%%%%\n")
     response = generate_response(client, context)
     #context.append({"role": "assistant", "content": response})
     return response 
-#
+
 def Experience_code(client,name,background,game_Experience):
     global voice_b
     os.system('cls')
-    print("\n\n%%%%%%%%%%%%%%%%%%%拿出笔记%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%组织语言%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%开始演讲%%%%%%%%%%%%%%%%%%%\n")
+    print("\n\n%%%%%%%%%%%%%%%%%%%Taking notes%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Organize language%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Start presentation%%%%%%%%%%%%%%%%%%%\n")
     context = []
     user_input = QA.ui_YourExperience(name,background,game_Experience)
     context.append({"role": "user", "content": user_input})
@@ -163,7 +166,7 @@ def run_aIgame_in_cmd(client,UI_flag):
                 context = []
                 if UI_flag:
                     os.system('cls')
-                    print("\n\n%%%%%%%%%%%%%%%%%%%打开表情%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%到处乱贴%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%粉刷界面%%%%%%%%%%%%%%%%%%%\n")
+                    print("\n\n%%%%%%%%%%%%%%%%%%%Open expressions%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Stick everywhere%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%Paint interface%%%%%%%%%%%%%%%%%%%\n")
                     voice_b.stop()
                     voice_b = pygame.mixer.Sound("music\\voice\\fabulous_"+str(random.randint(0,8))+".wav")
                     voice_b.play()
@@ -173,14 +176,14 @@ def run_aIgame_in_cmd(client,UI_flag):
                     os.system('cls')
                     print(response)
                     printed_prompt = False  # 标记已经打印过提示符，防止再次打印
-                    print("\n\n输入选择数字后回车,0为退出:")                    
+                    print("\n\nEnter the selected number and press Enter, 0 to exit:")                    
                 uitext =""
 
     process.wait()  # 等待子进程结束
     os.system('cls')
     voice_b.stop()
     play_voice("oopsies")
-    print("%%%%嚯!程序结束了%%%%\n\n看来你已完成了游戏,或者这位程序员犯了一些小错误。\n您可以在不关闭该窗口下,回到<WhoAreYou>远程面试窗口继续面试或者再次游玩\n对方发你的测试题我已经放到您的generated_data/game_code文件夹中了\n下次编写时会替换掉这位程序员写的代码~\n")
+    print("%%%% Oh! The program has ended %%%%\n\nIt looks like you have finished the game, or the programmer made some small mistakes.\nYou can return to the <WhoAreYou> remote interview window to continue the interview or play again without closing this window.\nThe test questions sent by the other party have been placed in your generated_data/game_code folder.\nNext time, the code written by this programmer will be replaced~\n")
     return 
 
 def play_voice(voice_file):
@@ -194,7 +197,7 @@ api_key = ""
 api_key = read_api_key('api_key.txt') #程序的心脏
 if api_key == "":
     os.system('cls')    
-    print("木有找到API钥匙文件,请前往"+"https://ai.nvidia.com/"+"\n获取免费钥匙后粘贴进api_key.txt")
+    print("No API key file found. Please visit "+"https://ai.nvidia.com/"+"\n to get a free key and paste it into api_key.txt.")
     exit()
 client = create_openai_client(api_key)
 

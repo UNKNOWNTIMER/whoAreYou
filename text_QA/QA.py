@@ -1,33 +1,33 @@
 from RNG.RNG_list import random_country,random_game_element,random_Experience,random_game
 import random
 global _country,change_language
-change_language = "英文"
-#游戏核心启动随机数,不一定为程序员,可把程序员换成其他职业都行
+change_language = "english"
+# Core game startup random number, not necessarily a programmer, can replace the programmer with other professions
 def wAY():
     global change_language,_country
     _country = random_country()
-    wAY = "国家:"+_country+",随机提供一位年龄在"+str(random.randint(1,9)*10)+"岁左右的wiki全球真实世界知名程序员,只用"+change_language+"回答,python文本结构如name=\"xxx\"age=\"xxx\"gender=\"xxx\"background=\"xxx\""
+    wAY = "Country: "+_country+", randomly provide a globally recognized real-world programmer from Wikipedia who is approximately "+str(random.randint(1,9)*10)+" years old. Answer in "+change_language+". Python text structure as follows:name=\"xxx\"age=\"xxx\"gender=\"xxx\"background=\"xxx\""
     return wAY
 
-#生成游戏代码构造
+# Generate game code structure
 def ai_game(A_element,B_type):
     global change_language
-    ai_game = "用python生成一个"+A_element+"有关的"+B_type+"游戏,内容丰富,玩家输入数字方式交互,输入0代表游戏结束,代码UI部分为"+change_language+",回答完整代码"
+    ai_game = "Generate a game related to "+A_element+" using Python, of type "+B_type+", with rich content. Players interact by inputting numbers, and inputting 0 ends the game. The language should be "+change_language+". Provide the complete code."
     return ai_game
 
-#美化生成后运行中的游戏的UI
+# Beautify the generated game UI during runtime
 def ui_game(ui_text):
     global change_language
-    ui_game = "\""+ui_text+"\""+":以上为一个UI交互界面,在不改变原本UI的情况下，在后面加()进行一个"+change_language+"的内容润色并添加表情符号,只回答UI界面"
+    ui_game = "\""+ui_text+"\""+":The above is a UI interaction interface. Without changing the original UI, add content in "+change_language+" inside parentheses for a touch of refinement and add emojis. Just answer with the UI interface."
     return ui_game
 
-#标准身份扮演
+# Standard role-playing
 def ui_YourExperience(name,background,RNG_Experience):
     global change_language
-    ui_Experience = "我们来玩一个角色扮演游戏,假装你是知名程序员"+name+",你曾经:"+background+"你有什么关于"+RNG_Experience+"的分享?回答控制在100字以内,只用"+change_language+"回答"        
+    ui_Experience = "Let's play a role-playing game. Pretend you are the famous programmer "+name+". You have: "+background+". What can you share about "+RNG_Experience+"? Please answer within 100 words, in "+change_language+"."        
     return ui_Experience
 
-#程序菜单随机关键词代码构造
+# Program menu random keyword code construction
 def RNG_random_game():
     global change_language
     RNG_game = "def random_game():game_types = [\""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\",  \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\",\""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\", \""+random_game()+"\",] return random.choice(game_types)根据以上代码,在代码原本基础上扩写100个"+change_language+"的随机关键词内容关于游戏类型,不重复,python结构代码"

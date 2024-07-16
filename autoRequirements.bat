@@ -1,5 +1,5 @@
 @echo off
-:: 检查是否安装了 Python 3.11.9
+::  Python 3.11.9
 python --version | findstr "3.11.9"
 if %errorlevel% equ 0 (
     echo Python 3.11.9 is already installed.
@@ -10,7 +10,6 @@ if %errorlevel% equ 0 (
     del python-3.11.9.exe
 )
 
-:: 检查是否安装了 pip
 pip --version
 if %errorlevel% equ 0 (
     echo pip is already installed.
@@ -20,7 +19,7 @@ if %errorlevel% equ 0 (
     python get-pip.py
     del get-pip.py
 )
-:: 检查并安装所需的 pip 包
+
 pip show openai pillow pygame > nul
 if %errorlevel% equ 0 (
     echo All required packages are already installed.
