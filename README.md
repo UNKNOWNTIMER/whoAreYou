@@ -18,7 +18,7 @@
 
 <h1 align="center">
   <br>
-    <img src="readmedata/(CN)technologicalProcess.jpg" alt="WHOAREYOU" width="600"></a>
+    <img src="readmedata/(EN)technologicalProcess.jpg" alt="WHOAREYOU" width="1400"></a>
   <br>
 </h1
 
@@ -35,15 +35,16 @@
 
 ## How To Use
 
-> First, you can [download](https://github.com/UNKNOWNTIMER/whoAreYou/archive/refs/heads/main.zip) the zip file here 
-> |or| 
+> First, you can [download](https://github.com/UNKNOWNTIMER/whoAreYou/archive/refs/heads/main.zip) the zip file here
+> |or|
 > clone the repository to your local machine:
+
 ```bash
 # Clone this repository
 $ git clone https://github.com/UNKNOWNTIMER/whoAreYou.git
 ```
 
-> Next, run the 'requirements.bat' to automatically set up the environment 
+> Next, run the 'requirements.bat' to automatically set up the environment
 > |or|
 > configure a virtual environment using conda:
 
@@ -73,7 +74,7 @@ Use the [ ↑ ] and [ ↓ ] keys to navigate, and press [ ENTER ] to make a sele
 
 > ##### What if there's no background content when I launch the program?
 
-![alt text](readmedata/019FF143.png)If you encounter communication errors or restrictions, it's likely due to the depletion of the pre-provided API calls. Visit[NVIDIA](https://build.nvidia.com/meta/llama3-70b), click on Get API Key to register and obtain a key for free, then copy it to the /api_key.txt file.
+![alt text](readmedata/019FF143.png)If you encounter communication errors or restrictions, it's likely due to the depletion of the pre-provided API calls. Visit[NVIDIA](https://build.nvidia.com/meta/llama3-70b), click on Get API Key to register and obtain a key for free, then copy it to the 'api_key.txt' file.
 
 - Rest assured, no keys will be collected.
 
