@@ -4,7 +4,7 @@
   <br>
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-red" alt="License"></a>
 </p>
-  <strong style="font-weight: bold; font-size: 40px;">-WhoAreYou-</strong>
+  <strong style="font-weight: bold; font-size: 40px;">-WhoAreYou DEMO-</strong>
   <br>
 </h1
 
@@ -35,49 +35,47 @@
 
 ## How To Use
 
-> 首先你可以[在此下载](https://github.com/UNKNOWNTIMER/whoAreYou/archive/refs/heads/main.zip)压缩包  或  使用git到本地
-
+> First, you can [download](https://github.com/UNKNOWNTIMER/whoAreYou/archive/refs/heads/main.zip) the zip file here 
+> |or| 
+> clone the repository to your local machine:
 ```bash
 # Clone this repository
 $ git clone https://github.com/UNKNOWNTIMER/whoAreYou.git
 ```
 
-> 然后运行requirements.bat自动配置环境   或   使用conda配置虚拟环境后
+> Next, run the 'requirements.bat' to automatically set up the environment 
+> |or|
+> configure a virtual environment using conda:
 
 ```python
-# 到文件目录下使用pip配置环境
+# Navigate to the directory and set up the environment with pip
 pip install -r requirements.txt
 ```
 
-> 最后运行startGame  或  CMD端输入
+> Finally, launch the game by running 'startGame.bat'
+> |or|
+> entering the following command in the CMD:
 
 ```python
-# 到文件目录下使用pip配置环境
+# Start the game from the directory
 py main.py
 ```
 
-> ##### 提示
+> ##### Note
 
-第一次启动会比较慢,请稍等片刻,待程序构建完成就能开始DEMO的运行
+The first launch may take a moment as the program builds. Please be patient; once the setup is complete, you can start the demo.
 
-> ##### 操作方法
+> ##### Controls
 
-使用[ ↑ ]键[ ↓ ]键控制选择 [ ENTER ] 键进行确认
+Use the [ ↑ ] and [ ↓ ] keys to navigate, and press [ ENTER ] to make a selection.
 
 ## Q&A
 
-> ##### 我的程序打开后面试者没有背景内容？
+> ##### What if there's no background content when I launch the program?
 
-![alt text](readmedata/019FF143.png)如果提示调用程序通讯受限或者通讯报错,那么极大概率应该是我预提供的API调用次数消耗殆尽
-请前往[NVIDIA](https://build.nvidia.com/meta/llama3-70b)点击Get API Key注册并免费获取密匙,最后将密匙复制到/api_key.txt文件中即可。
+![alt text](readmedata/019FF143.png)If you encounter communication errors or restrictions, it's likely due to the depletion of the pre-provided API calls. Visit[NVIDIA](https://build.nvidia.com/meta/llama3-70b), click on Get API Key to register and obtain a key for free, then copy it to the /api_key.txt file.
 
-- 我不会收集任何密匙
-
-> ##### 模型生成的游戏会有安全隐患么？
-
-一般情况下是没有的,除非meta的llama3-70b-instruct开源模型在训练时出现安全漏洞或者NVIDIA对通讯过程做了什么手脚，以上情况都不太可能出现，所以你可以放心的使用。如果真提取到了病毒文件并出现安全问题，请务必前去寻找Meta或NVIDIA工程师。
-
-- 我的程序只是一个架构构想而已。
+- Rest assured, no keys will be collected.
 
 ## Credits
 
