@@ -18,7 +18,7 @@
 
 <h1 align="center">
   <br>
-    <img src="readmedata/(EN)technologicalProcess.jpg" alt="WHOAREYOU" width="1400"></a>
+    <img src="readmedata/(EN)technologicalProcess.png" alt="WHOAREYOU" width="1000"></a>
   <br>
 </h1
 
