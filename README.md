@@ -35,7 +35,9 @@
 
 ## How To Use
 
-> First, you can [download](https://github.com/UNKNOWNTIMER/whoAreYou/archive/refs/heads/main.zip) the zip file here
+> First, you can [(EN)download](https://github.com/UNKNOWNTIMER/whoAreYou/archive/refs/heads/main.zip) the zip file here
+> |or|
+> 中文版这里[(CN)下载](https://pan.baidu.com/s/1Th0H3Uy-PGr9YP-pDxg9tA?pwd=TIME)
 > |or|
 > clone the repository to your local machine:
 
